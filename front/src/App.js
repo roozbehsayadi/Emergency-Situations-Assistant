@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { LoadingOutlined } from '@ant-design/icons'
 
+import getUserRole from './functions/getUserRole'
+
 import 'antd/dist/antd.css'
 
 import { Layout, Menu } from 'antd'
@@ -51,34 +53,10 @@ const App = () => {
 					<Menu.Item key="home">Home</Menu.Item>
 				</Menu>
 			</Header>
+			<Content>
+				<h1>{getUserRole(name)}</h1>
+			</Content>
 		</Layout>
-	)
-
-	return (
-		<div>
-			<button
-				onClick={() =>
-					loginWithRedirect({
-						screen_hint: 'signup',
-					})
-				}
-				variant="primary"
-			>
-				Sign up
-			</button>
-			<button onClick={() => loginWithRedirect({})} variant="primary">
-				Sign in
-			</button>
-			<button
-				onClick={() => logout({ returnTo: window.location.origin })}
-				variant="danger"
-			>
-				Sign out
-			</button>
-			<h1>name: {name}</h1>
-			<h2>picture: {picture}</h2>
-			<h3>email: {email}</h3>
-		</div>
 	)
 }
 
