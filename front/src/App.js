@@ -33,7 +33,7 @@ const App = () => {
 			</div>
 		)
 
-	const { name, picture, email } = user
+	const { nickname, picture, email } = user
 
 	return (
 		<Layout className="layout">
@@ -43,7 +43,7 @@ const App = () => {
 				)}
 				<Menu onClick={handleNavClick} theme="dark" mode="horizontal">
 					{isAuthenticated && (
-						<SubMenu title={name}>
+						<SubMenu title={nickname}>
 							<Menu.Item key="logout">Log out</Menu.Item>
 						</SubMenu>
 					)}
@@ -54,7 +54,13 @@ const App = () => {
 				</Menu>
 			</Header>
 			<Content>
-				<h1>{getUserRole(name)}</h1>
+				{isAuthenticated && (
+					<h1>
+						{getUserRole(email).then((val) => {
+							return val
+						})}
+					</h1>
+				)}
 			</Content>
 		</Layout>
 	)
