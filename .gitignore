@@ -1,0 +1,4 @@
+# log files.
+*.log
+# ide generated files.
+.idea

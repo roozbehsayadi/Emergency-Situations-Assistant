@@ -26,6 +26,18 @@ const App = () => {
 		isAuthenticated,
 	} = useAuth0()
 
+	var email = 'None'
+	const [userRole, setUserRole] = useState('None')
+	useEffect(() => {
+		if (isAuthenticated) {
+			console.log('getting user role')
+			getUserRole(email).then((val) => {
+				setUserRole(val)
+				console.log('user role is' + val)
+			})
+		}
+	}, [isAuthenticated, email])
+
 	if (isLoading)
 		return (
 			<div className="loadingCenterContainer">
@@ -33,7 +45,8 @@ const App = () => {
 			</div>
 		)
 
-	const { nickname, picture, email } = user
+	const { nickname, picture } = user
+	email = user.email
 
 	return (
 		<Layout className="layout">
@@ -54,13 +67,12 @@ const App = () => {
 				</Menu>
 			</Header>
 			<Content>
-				{isAuthenticated && (
-					<h1>
-						{getUserRole(email).then((val) => {
-							return val
-						})}
-					</h1>
+				{isAuthenticated && userRole === 'None' && (
+					<div className="loadingCenterContainer">
+						<LoadingOutlined />
+					</div>
 				)}
+				{/*Injaa bayad be tavajjoh be role ye component khaas ro load konim*/}
 			</Content>
 		</Layout>
 	)
