@@ -8,12 +8,6 @@ const db = require('./database/db.js')
 var logger = require ('./logger')
 require('dotenv').config()
 app.use(cors())
-
-// app.use ((req , res , next) => {
-//     logger.info('info' , 'error')
-//     next()
-// })
-
 logger.log(`Server started at ${(new Date()).toJSON().slice(0, 19).replace(/[-T]/g, ':')}`);
 process.on('SIGINT', function() {
 	logger.log(`Request for closing server at ${(new Date()).toJSON().slice(0, 19).replace(/[-T]/g, ':')}`);

@@ -1,6 +1,8 @@
 const MongoClient = require('mongodb').MongoClient;
 var Promise = require('promise');
 require('dotenv').config()
+
+var logger = require ('../logger')
 const uri  = `mongodb+srv://${process.env.dbusername}:${process.env.dbpass}@cluster0.is06k.gcp.mongodb.net/${process.env.dbname}?retryWrites=true&w=majority`
 const client = new MongoClient(uri, { useNewUrlParser: true ,
                                       useUnifiedTopology: true  });
@@ -10,7 +12,7 @@ function connect (){
     client.connect(function(err, client) {
         if (err) throw err;
         db = client.db("projectDB")
-        console.log("Switched to "+db.databaseName+" database");
+        logger.log(`db started at ${(new Date()).toJSON().slice(0, 19).replace(/[-T]/g, ':')}`);
     });
 }
 
@@ -20,6 +22,7 @@ function find (collection , object) {
         db.collection(collection).findOne(object, function(err, result) {
             if (err) rej(err)
             res(result)
+
         });
     })
 }
@@ -30,6 +33,7 @@ function findMany (collection , object) {
         db.collection(collection).find(object).toArray(function(err, result) {
             if (err)  rej(err);
             res(result)
+
         });
     })
 }
@@ -40,6 +44,7 @@ function insert (collection , object){
         db.collection(collection).insertOne(object, function(err, result) {
             if (err)  rej(err)
             res("added")
+            logger.log(`record inserted to collection ${collection} database at ${(new Date()).toJSON().slice(0, 19).replace(/[-T]/g, ':')}`);
         });
     })
 }
