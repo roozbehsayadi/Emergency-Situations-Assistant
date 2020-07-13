@@ -13,6 +13,16 @@ function getUserRole (userName){
     });
 }
 
+function insertToForms (jsonObj){
+    return new Promise((res , rej) => {
+        db.insert("forms" , jsonObj)
+            .then ((mes) => {
+                res("added")
+            })
+    })
+}
+
 module.exports = {
-	getUserRole: getUserRole,
+    getUserRole: getUserRole,
+    insertToForms : insertToForms ,
 }

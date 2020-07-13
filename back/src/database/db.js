@@ -25,7 +25,19 @@ function find (collection , object) {
     })
 }
 
+function insert (collection , object){
+
+    return new Promise((res , rej) => {
+        // object = JSON.parse(object)
+        db.collection(collection).insertOne(object, function(err, result) {
+            if (err)  rej(err)
+            res("added")
+        });
+    })
+}
+
 module.exports = {
     find: find,
     connect : connect ,
+    insert : insert,
 }
