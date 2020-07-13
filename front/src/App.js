@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { LoadingOutlined } from '@ant-design/icons'
 
-import getUserRole from './functions/getUserRole'
-
 import 'antd/dist/antd.css'
 
 import { Layout, Menu } from 'antd'
@@ -33,7 +31,7 @@ const App = () => {
 			</div>
 		)
 
-	const { name, picture, email } = user
+	const { nickname, picture, email } = user
 
 	return (
 		<Layout className="layout">
@@ -43,7 +41,7 @@ const App = () => {
 				)}
 				<Menu onClick={handleNavClick} theme="dark" mode="horizontal">
 					{isAuthenticated && (
-						<SubMenu title={name}>
+						<SubMenu title={nickname}>
 							<Menu.Item key="logout">Log out</Menu.Item>
 						</SubMenu>
 					)}
@@ -53,9 +51,7 @@ const App = () => {
 					<Menu.Item key="home">Home</Menu.Item>
 				</Menu>
 			</Header>
-			<Content>
-				<h1>{getUserRole(name)}</h1>
-			</Content>
+			<Content></Content>
 		</Layout>
 	)
 }

@@ -16,4 +16,3 @@ app.listen(port, () =>
 )
 
 db.connect();
-
