@@ -15,7 +15,6 @@ function connect (){
 }
 
 function find (collection , object) {
-
     return new Promise((res , rej) => {
         object = JSON.parse(object)
         db.collection(collection).findOne(object, function(err, result) {
@@ -25,10 +24,19 @@ function find (collection , object) {
     })
 }
 
+function findMany (collection , object) {
+    return new Promise((res , rej) => {
+        object = JSON.parse(object)
+        db.collection(collection).find(object).toArray(function(err, result) {
+            if (err)  rej(err);
+            res(result)
+        });
+    })
+}
+
 function insert (collection , object){
 
     return new Promise((res , rej) => {
-        // object = JSON.parse(object)
         db.collection(collection).insertOne(object, function(err, result) {
             if (err)  rej(err)
             res("added")
@@ -36,8 +44,18 @@ function insert (collection , object){
     })
 }
 
+function findAll (collection) {
+    return new Promise ((res , rej) => {
+        db.collection(collection).find({}).toArray(function(err, result) {
+            if (err)  rej(err);
+            res(result)
+        });
+    })
+}
 module.exports = {
     find: find,
     connect : connect ,
     insert : insert,
+    findMany : findMany,
+    findAll : findAll ,
 }
