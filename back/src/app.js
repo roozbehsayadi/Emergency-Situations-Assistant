@@ -2,6 +2,7 @@ const express = require('express')
 var cors = require('cors')
 const app = express()
 const router = require('./api/api')
+const adminRouter = require('./api/adminApi')
 const port = 9000
 const db = require('./database/db.js')
 
@@ -15,6 +16,7 @@ process.on('SIGINT', function() {
 });
 
 app.use('/', router)
+app.use('/admin', adminRouter)
 app.listen(port, () =>
 	console.log(`App listening at http://localhost:${process.env.port}`)
 )

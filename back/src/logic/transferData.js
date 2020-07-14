@@ -3,7 +3,7 @@ var Promise = require('promise');
 const { json } = require('express');
 
 
-function getUserRole (userName){
+exports.getUserRole = function(userName){
     return new Promise ((res , rej) => {
         let jsonStr = " {\"username\" : \"" + userName + "\" }" ;
         let role ;
@@ -16,7 +16,7 @@ function getUserRole (userName){
     });
 }
 
-function insertToForms (jsonObj){
+exports.insertToForms = function (jsonObj){
     return new Promise((res , rej) => {
         db.insert("forms" , jsonObj)
             .then ((mes) => {
@@ -28,7 +28,7 @@ function insertToForms (jsonObj){
 }
 
 
-function getAllForms (){
+exports.getAllForms = function (){
     return new Promise((res , rej) => {
         db.findAll("forms").then ((val) => {
             res(val)
@@ -38,7 +38,7 @@ function getAllForms (){
     })
 }
 
-function getForm (id){
+exports.getForm = function(id){
     return new Promise ((res , rej) => {
         let jsonStr = " {\"id\" : \"" + id + "\" }" ;
         let role ;
@@ -51,7 +51,7 @@ function getForm (id){
     });
 }
 
-function insertToAnswers (answers , name , id){
+exports.insertToAnswers = function (answers , name , id){
     return new Promise((res , rej) => {
         let jsonObj = {}
         jsonObj["username"] = name;
@@ -67,10 +67,10 @@ function insertToAnswers (answers , name , id){
     })
 }
 
-function getAnswers (id) {
+exports.getAnswers = function (id) {
     return new Promise ((res , rej) => {
         let jsonStr = " {\"formId\" : \"" + id + "\" }" ;
-        let role ;
+
         db.findMany("answers" , jsonStr)
             .then ((val) => {
                 res(val);
@@ -80,11 +80,26 @@ function getAnswers (id) {
     });
 }
 
-module.exports = {
-    getUserRole: getUserRole,
-    insertToForms : insertToForms ,
-    getAllForms : getAllForms ,
-    getForm : getForm ,
-    insertToAnswers : insertToAnswers,
-    getAnswers : getAnswers ,
+exports.replaceForm = function (id , newForm) {
+    let cond = " {\"id\" : \"" + id + "\" }" ;
+
+    return new Promise((res , rej) => {
+        db.replace("forms" , cond , newForm).then((val) => {
+            res(val.modifiedCount)
+        }).catch ((err) => {
+            rej(err)
+        })
+    })
+}
+
+exports.deleteForm = function (id) {
+    let cond = " {\"id\" : \"" + id + "\" }" ;
+
+    return new Promise((res , rej) => {
+        db.deleteOne("forms" , cond).then((val) => {
+            res(val.deletedCount)
+        }).catch((err) => {
+            rej(err)
+        })
+    })
 }
