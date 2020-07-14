@@ -3,8 +3,34 @@ const router = express.Router();
 const transferData = require('../logic/transferData.js');
 const { json } = require('express');
 var logger = require ('../logger')
+require('dotenv').config()
+////////////////////////////////////////////////////////auth
+const jwt = require('express-jwt');
+const jwtAuthz = require('express-jwt-authz');
+const jwksRsa = require('jwks-rsa');
+const checkJwt = jwt({
+    // Dynamically provide a signing key
+    // based on the kid in the header and
+    // the signing keys provided by the JWKS endpoint.
+    secret: jwksRsa.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequestsPerMinute: 5,
+      jwksUri: `https://YOUR_DOMAIN/.well-known/jwks.json`
+    }),
 
+    // Validate the audience and the issuer.
+    audience: process.env.REACT_APP_AUTH0_API_IDENTIFIER,
+    issuer: `https://YOUR_DOMAIN/`,
+    algorithms: ['RS256']
+  });
 
+router.get('/azin' , checkJwt , (req , res) => {
+    res.json({
+        message: 'salam man azinam'
+      });
+})
+///////////////////////////////////////////////////////auth
 
 //tested on postman
 router.get('/forms', (req, res) => {

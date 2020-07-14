@@ -6,6 +6,8 @@ const adminRouter = require('./api/adminApi')
 const port = 9000
 const db = require('./database/db.js')
 
+
+
 var logger = require ('./logger')
 require('dotenv').config()
 app.use(cors())
