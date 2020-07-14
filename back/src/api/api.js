@@ -21,12 +21,11 @@ const checkJwt = jwt({
 
 	// Validate the audience and the issuer.
 	audience: process.env.api_identifier,
-	issuer: `https://${process.env.domain}`,
+	issuer: `https://${process.env.domain}/`,
 	algorithms: ['RS256'],
 })
 
 router.get('/azin', checkJwt, (req, res) => {
-	console.log(req)
 	res.json({
 		message: 'salam man azinam',
 	})
