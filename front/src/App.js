@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react'
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect,
+} from 'react-router-dom'
+
 import { useAuth0 } from '@auth0/auth0-react'
+
+import getAndSetUserRole from './functions/getAndSetUserRole'
+
+import ControlCenterAgentForms from './components/ControlCenterAgentForms'
+import FieldAgentForms from './components/FieldAgentForms'
+
 import { LoadingOutlined } from '@ant-design/icons'
-
-import getUserRole from './functions/getUserRole'
-
 import 'antd/dist/antd.css'
-
 import { Layout, Menu } from 'antd'
-// import Axios from 'axios'
-const { Header, Content, Footer } = Layout
+const { Header, Content } = Layout
 const { SubMenu } = Menu
-
-const axios = require('axios').default
 
 const App = () => {
 	const handleNavClick = (e) => {
-		if (e.key === 'home') console.log('already in home')
+		if (e.key === 'home') console.log('Redirect to home')
 		else if (e.key === 'login') loginWithRedirect()
 		else if (e.key === 'logout')
 			logout({ returnTo: window.location.origin })
@@ -33,48 +39,9 @@ const App = () => {
 	var email = 'None'
 	const [userRole, setUserRole] = useState('None')
 	useEffect(() => {
-		if (isAuthenticated) {
-			console.log('getting user role')
-			getUserRole(email).then((val) => {
-				setUserRole(val)
-				console.log('user role is' + val)
-			})
-		}
-	}, [isAuthenticated, email])
-
-	const [response, setResponse] = useState('None')
-	useEffect(() => {
-		const getResponse = async () => {
-			if (isAuthenticated) {
-				try {
-					const accessToken = await getAccessTokenSilently({
-						audience: process.env.REACT_APP_AUTH0_API_IDENTIFIER,
-					})
-					const config = {
-						headers: {
-							Authorization: `Bearer ${accessToken}`,
-						},
-					}
-					axios({
-						method: 'get',
-						url: 'http://localhost:9000/azin',
-						headers: {
-							Authorization: `Bearer ${accessToken}`,
-						},
-					})
-						.then((response) => {
-							setResponse(response)
-						})
-						.catch((error) => {
-							console.log(error)
-						})
-				} catch (e) {
-					console.log(e.message)
-				}
-			}
-		}
-		getResponse()
-	}, [isAuthenticated, getAccessTokenSilently])
+		if (isAuthenticated)
+			getAndSetUserRole(email, getAccessTokenSilently, setUserRole)
+	}, [isAuthenticated, email, getAccessTokenSilently])
 
 	if (isLoading)
 		return (
@@ -110,8 +77,27 @@ const App = () => {
 						<LoadingOutlined />
 					</div>
 				)}
-				<h1>{JSON.stringify(response)}</h1>
-				{/*Injaa bayad be tavajjoh be role ye component khaas ro load konim*/}
+				{isAuthenticated && userRole !== 'None' && (
+					<Router>
+						<Switch>
+							<Route
+								exact
+								path="/"
+								children={<Redirect to="/forms" />}
+							/>
+							<Route
+								path="/forms"
+								children={
+									userRole === 'field_agent' ? (
+										<FieldAgentForms />
+									) : (
+										<ControlCenterAgentForms />
+									)
+								}
+							/>
+						</Switch>
+					</Router>
+				)}
 			</Content>
 		</Layout>
 	)

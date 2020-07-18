@@ -80,7 +80,7 @@ router.get('/control-center/:name/forms/:id(\\d+)', (req, res) => {
 		})
 })
 
-router.get('/user/:name/role', (req, res) => {
+router.get('/user/:name/role', checkJwt, (req, res) => {
 	let { name } = req.params
 
 	transferData
