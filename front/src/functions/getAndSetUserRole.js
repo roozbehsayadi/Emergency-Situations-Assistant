@@ -5,7 +5,7 @@ const getAndSetUserRole = async (
 	getAccessTokenSilently,
 	setUserRole
 ) => {
-	const accessToken = getAccessTokenSilently({
+	const accessToken = await getAccessTokenSilently({
 		audience: process.env.REACT_APP_AUTH0_API_IDENTIFIER,
 	})
 	axios({
