@@ -171,3 +171,222 @@
 {"message":"get request for /admin/polygons/1","level":"info"}
 {"message":"get request for /admin/polygons","level":"info"}
 {"message":"Request for closing server at 2020:07:16:07:10:25","level":"info"}
+{"message":"Server started at 2020:07:19:13:58:17","level":"info"}
+{"message":"db started at 2020:07:19:13:58:19","level":"info"}
+{"message":"Request for closing server at 2020:07:19:14:02:16","level":"info"}
+{"message":"Server started at 2020:07:19:14:02:21","level":"info"}
+{"message":"db started at 2020:07:19:14:02:23","level":"info"}
+{"message":"Request for closing server at 2020:07:19:14:08:00","level":"info"}
+{"message":"Server started at 2020:07:19:14:08:25","level":"info"}
+{"message":"db started at 2020:07:19:14:08:28","level":"info"}
+{"message":"Request for closing server at 2020:07:19:14:09:03","level":"info"}
+{"message":"Server started at 2020:07:19:14:09:05","level":"info"}
+{"message":"db started at 2020:07:19:14:09:07","level":"info"}
+{"message":"Request for closing server at 2020:07:19:14:13:03","level":"info"}
+{"message":"Server started at 2020:07:19:14:13:10","level":"info"}
+{"message":"db started at 2020:07:19:14:13:12","level":"info"}
+{"message":"Request for closing server at 2020:07:19:15:25:06","level":"info"}
+{"message":"Server started at 2020:07:19:15:26:55","level":"info"}
+{"message":"db started at 2020:07:19:15:26:57","level":"info"}
+{"message":"Request for closing server at 2020:07:19:15:29:20","level":"info"}
+{"message":"Server started at 2020:07:19:15:29:25","level":"info"}
+{"message":"db started at 2020:07:19:15:29:28","level":"info"}
+{"message":"Request for closing server at 2020:07:19:15:29:40","level":"info"}
+{"message":"Server started at 2020:07:19:15:29:48","level":"info"}
+{"message":"db started at 2020:07:19:15:29:52","level":"info"}
+{"message":"Request for closing server at 2020:07:19:15:32:18","level":"info"}
+{"message":"Server started at 2020:07:19:15:32:24","level":"info"}
+{"message":"db started at 2020:07:19:15:32:27","level":"info"}
+{"message":"Request for closing server at 2020:07:19:15:36:16","level":"info"}
+{"message":"Server started at 2020:07:19:15:36:21","level":"info"}
+{"message":"db started at 2020:07:19:15:36:25","level":"info"}
+{"message":"Request for closing server at 2020:07:19:15:36:42","level":"info"}
+{"message":"Server started at 2020:07:19:15:37:57","level":"info"}
+{"message":"db started at 2020:07:19:15:38:00","level":"info"}
+{"message":"Request for closing server at 2020:07:19:15:38:21","level":"info"}
+{"message":"Server started at 2020:07:19:15:38:29","level":"info"}
+{"message":"db started at 2020:07:19:15:38:38","level":"info"}
+{"message":"Request for closing server at 2020:07:19:15:39:15","level":"info"}
+{"message":"Server started at 2020:07:19:15:39:21","level":"info"}
+{"message":"db started at 2020:07:19:15:39:48","level":"info"}
+{"message":"Request for closing server at 2020:07:19:15:42:31","level":"info"}
+{"message":"Server started at 2020:07:19:15:59:59","level":"info"}
+{"message":"db started at 2020:07:19:16:00:06","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:02:21","level":"info"}
+{"message":"Server started at 2020:07:19:16:02:25","level":"info"}
+{"message":"db started at 2020:07:19:16:02:31","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:04:09","level":"info"}
+{"message":"Server started at 2020:07:19:16:04:18","level":"info"}
+{"message":"db started at 2020:07:19:16:04:27","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:05:44","level":"info"}
+{"message":"Server started at 2020:07:19:16:05:48","level":"info"}
+{"message":"Server started at 2020:07:19:16:06:24","level":"info"}
+{"message":"db started at 2020:07:19:16:06:26","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:08:36","level":"info"}
+{"message":"Server started at 2020:07:19:16:08:40","level":"info"}
+{"message":"db started at 2020:07:19:16:08:42","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:09:53","level":"info"}
+{"message":"Server started at 2020:07:19:16:09:57","level":"info"}
+{"message":"db started at 2020:07:19:16:10:00","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:11:43","level":"info"}
+{"message":"Server started at 2020:07:19:16:11:47","level":"info"}
+{"message":"db started at 2020:07:19:16:11:50","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:12:56","level":"info"}
+{"message":"Server started at 2020:07:19:16:13:01","level":"info"}
+{"message":"db started at 2020:07:19:16:13:04","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:13:21","level":"info"}
+{"message":"Server started at 2020:07:19:16:13:27","level":"info"}
+{"message":"db started at 2020:07:19:16:13:30","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:13:56","level":"info"}
+{"message":"Server started at 2020:07:19:16:14:03","level":"info"}
+{"message":"db started at 2020:07:19:16:14:06","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:15:21","level":"info"}
+{"message":"Server started at 2020:07:19:16:15:28","level":"info"}
+{"message":"db started at 2020:07:19:16:15:31","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:15:58","level":"info"}
+{"message":"Server started at 2020:07:19:16:16:04","level":"info"}
+{"message":"db started at 2020:07:19:16:16:07","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:17:16","level":"info"}
+{"message":"Server started at 2020:07:19:16:17:21","level":"info"}
+{"message":"db started at 2020:07:19:16:17:23","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:17:33","level":"info"}
+{"message":"Server started at 2020:07:19:16:18:41","level":"info"}
+{"message":"db started at 2020:07:19:16:18:46","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:22:14","level":"info"}
+{"message":"Server started at 2020:07:19:16:22:18","level":"info"}
+{"message":"db started at 2020:07:19:16:22:21","level":"info"}
+{"message":"Request for closing server at 2020:07:19:16:59:20","level":"info"}
+{"message":"Server started at 2020:07:19:16:59:29","level":"info"}
+{"message":"db started at 2020:07:19:16:59:34","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:00:22","level":"info"}
+{"message":"Server started at 2020:07:19:17:00:25","level":"info"}
+{"message":"db started at 2020:07:19:17:00:26","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:01:21","level":"info"}
+{"message":"Server started at 2020:07:19:17:01:25","level":"info"}
+{"message":"db started at 2020:07:19:17:01:28","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:03:44","level":"info"}
+{"message":"Server started at 2020:07:19:17:03:49","level":"info"}
+{"message":"db started at 2020:07:19:17:03:51","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:05:03","level":"info"}
+{"message":"Server started at 2020:07:19:17:05:05","level":"info"}
+{"message":"db started at 2020:07:19:17:05:08","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:07:45","level":"info"}
+{"message":"Server started at 2020:07:19:17:07:48","level":"info"}
+{"message":"db started at 2020:07:19:17:07:50","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:08:25","level":"info"}
+{"message":"Server started at 2020:07:19:17:08:29","level":"info"}
+{"message":"db started at 2020:07:19:17:08:30","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:08:47","level":"info"}
+{"message":"Server started at 2020:07:19:17:08:49","level":"info"}
+{"message":"db started at 2020:07:19:17:08:51","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:09:59","level":"info"}
+{"message":"Server started at 2020:07:19:17:10:01","level":"info"}
+{"message":"db started at 2020:07:19:17:10:03","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:10:40","level":"info"}
+{"message":"Server started at 2020:07:19:17:10:44","level":"info"}
+{"message":"db started at 2020:07:19:17:10:45","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:11:04","level":"info"}
+{"message":"Server started at 2020:07:19:17:11:07","level":"info"}
+{"message":"db started at 2020:07:19:17:11:09","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:11:29","level":"info"}
+{"message":"Server started at 2020:07:19:17:11:31","level":"info"}
+{"message":"db started at 2020:07:19:17:11:34","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:12:09","level":"info"}
+{"message":"Server started at 2020:07:19:17:12:12","level":"info"}
+{"message":"db started at 2020:07:19:17:12:14","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:12:40","level":"info"}
+{"message":"Server started at 2020:07:19:17:12:42","level":"info"}
+{"message":"db started at 2020:07:19:17:12:44","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:13:18","level":"info"}
+{"message":"Server started at 2020:07:19:17:13:21","level":"info"}
+{"message":"db started at 2020:07:19:17:13:24","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:14:03","level":"info"}
+{"message":"Server started at 2020:07:19:17:14:06","level":"info"}
+{"message":"db started at 2020:07:19:17:14:08","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:14:33","level":"info"}
+{"message":"Server started at 2020:07:19:17:14:36","level":"info"}
+{"message":"db started at 2020:07:19:17:14:38","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:15:19","level":"info"}
+{"message":"Server started at 2020:07:19:17:15:31","level":"info"}
+{"message":"db started at 2020:07:19:17:15:33","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:16:14","level":"info"}
+{"message":"Server started at 2020:07:19:17:16:17","level":"info"}
+{"message":"db started at 2020:07:19:17:16:19","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:18:31","level":"info"}
+{"message":"Server started at 2020:07:19:17:18:34","level":"info"}
+{"message":"db started at 2020:07:19:17:18:36","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:19:49","level":"info"}
+{"message":"Server started at 2020:07:19:17:19:51","level":"info"}
+{"message":"db started at 2020:07:19:17:19:53","level":"info"}
+{"message":"Request for closing server at 2020:07:19:17:20:19","level":"info"}
+{"message":"Server started at 2020:07:19:17:20:21","level":"info"}
+{"message":"db started at 2020:07:19:17:20:23","level":"info"}
+{"message":"Request for closing server at 2020:07:20:06:42:00","level":"info"}
+{"message":"Server started at 2020:07:20:06:42:04","level":"info"}
+{"message":"db started at 2020:07:20:06:42:06","level":"info"}
+{"message":"Request for closing server at 2020:07:20:06:43:26","level":"info"}
+{"message":"Server started at 2020:07:20:06:43:43","level":"info"}
+{"message":"db started at 2020:07:20:06:43:45","level":"info"}
+{"message":"Request for closing server at 2020:07:20:06:46:40","level":"info"}
+{"message":"Server started at 2020:07:20:06:46:44","level":"info"}
+{"message":"db started at 2020:07:20:06:46:46","level":"info"}
+{"message":"Request for closing server at 2020:07:20:06:47:22","level":"info"}
+{"message":"Server started at 2020:07:20:06:47:24","level":"info"}
+{"message":"db started at 2020:07:20:06:47:26","level":"info"}
+{"message":"Request for closing server at 2020:07:20:06:49:47","level":"info"}
+{"message":"Server started at 2020:07:20:06:49:57","level":"info"}
+{"message":"db started at 2020:07:20:06:49:59","level":"info"}
+{"message":"Request for closing server at 2020:07:20:06:50:32","level":"info"}
+{"message":"Server started at 2020:07:20:06:50:36","level":"info"}
+{"message":"db started at 2020:07:20:06:50:37","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:02:47","level":"info"}
+{"message":"Server started at 2020:07:20:07:02:49","level":"info"}
+{"message":"db started at 2020:07:20:07:02:51","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:03:34","level":"info"}
+{"message":"Server started at 2020:07:20:07:03:36","level":"info"}
+{"message":"db started at 2020:07:20:07:03:38","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:06:57","level":"info"}
+{"message":"Server started at 2020:07:20:07:06:59","level":"info"}
+{"message":"db started at 2020:07:20:07:07:02","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:07:14","level":"info"}
+{"message":"Server started at 2020:07:20:07:07:16","level":"info"}
+{"message":"db started at 2020:07:20:07:07:19","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:08:26","level":"info"}
+{"message":"Server started at 2020:07:20:07:08:28","level":"info"}
+{"message":"db started at 2020:07:20:07:08:30","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:08:44","level":"info"}
+{"message":"Server started at 2020:07:20:07:08:46","level":"info"}
+{"message":"db started at 2020:07:20:07:08:48","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:09:53","level":"info"}
+{"message":"Server started at 2020:07:20:07:09:57","level":"info"}
+{"message":"db started at 2020:07:20:07:09:59","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:10:13","level":"info"}
+{"message":"Server started at 2020:07:20:07:10:15","level":"info"}
+{"message":"db started at 2020:07:20:07:10:17","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:11:09","level":"info"}
+{"message":"Server started at 2020:07:20:07:11:11","level":"info"}
+{"message":"db started at 2020:07:20:07:11:13","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:12:00","level":"info"}
+{"message":"Server started at 2020:07:20:07:12:02","level":"info"}
+{"message":"db started at 2020:07:20:07:12:04","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:12:20","level":"info"}
+{"message":"Server started at 2020:07:20:07:12:22","level":"info"}
+{"message":"db started at 2020:07:20:07:12:24","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:13:14","level":"info"}
+{"message":"Server started at 2020:07:20:07:13:16","level":"info"}
+{"message":"db started at 2020:07:20:07:13:18","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:14:33","level":"info"}
+{"message":"Server started at 2020:07:20:07:14:36","level":"info"}
+{"message":"db started at 2020:07:20:07:14:38","level":"info"}
+{"message":"record inserted to collection answers database at 2020:07:20:07:14:43","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:16:55","level":"info"}
+{"message":"Server started at 2020:07:20:07:16:58","level":"info"}
+{"message":"db started at 2020:07:20:07:17:00","level":"info"}
+{"message":"record inserted to collection answers database at 2020:07:20:07:17:06","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:18:00","level":"info"}
+{"message":"Server started at 2020:07:20:07:20:50","level":"info"}
+{"message":"db started at 2020:07:20:07:20:52","level":"info"}
+{"message":"record inserted to collection answers database at 2020:07:20:07:20:58","level":"info"}
+{"message":"Request for closing server at 2020:07:20:07:49:10","level":"info"}
+{"message":"Server started at 2020:07:20:07:49:12","level":"info"}
+{"message":"db started at 2020:07:20:07:49:14","level":"info"}

@@ -1,6 +1,7 @@
 const db = require('../database/db.js')
 var Promise = require('promise');
 const { json } = require('express');
+var inside = require('point-in-polygon');
 
 
 exports.insertToPoly  = function (jsonObj){
@@ -62,5 +63,21 @@ exports.deletePoly = function (id) {
             rej(err)
         })
     })
+}
+exports.isIn =function (coordinates){
+    return new Promise ((res , rej) => {
+        db.findAll("polygons").then((polygons) => {
+            result = []
+            polygons.forEach(element => {
+                if (inside(coordinates , element.geometry.coordinates[0]))
+                    result.push(element.properties.name) ;
+            });
+
+        res(result) ;
+        }).catch((err) => {
+            rej(err)
+        })
+    })
+
 }
 

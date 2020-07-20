@@ -10,10 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^3.5.9",
     "nodemon": "^2.0.4",
+    "point-in-polygon": "^1.0.1",
     "promise": "^8.1.0",
     "winston": "^3.3.3"
   }
