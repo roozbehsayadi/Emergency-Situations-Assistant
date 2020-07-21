@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { Table } from 'antd'
 
 import sendGetRequestAndSet from '../functions/sendGetRequestAndSet'
 
 const FieldAgentForms = ({ token, username }) => {
+	let history = useHistory()
+
 	const [forms, setForms] = useState(null)
 	useEffect(() => {
 		sendGetRequestAndSet('forms', token, setForms)
@@ -36,6 +39,12 @@ const FieldAgentForms = ({ token, username }) => {
 			dataSource={tableForms}
 			columns={columns}
 			loading={forms === null}
+			onRow={(record, index) => ({
+				onClick: () => {
+					console.log('CLICKED!')
+					history.push(`/submit_form/${record.id}/`)
+				},
+			})}
 		/>
 	)
 }
