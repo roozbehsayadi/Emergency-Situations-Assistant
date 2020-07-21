@@ -19,5 +19,33 @@ exports.add = (req, res) => {
             message : "problem adding new answers to database."
         })
     })
+}
+
+exports.getOne = (req , res) => {
+    transferData
+        .getAnswers(id)
+        .then((record) => {
+            if (record === null) {
+                logger.log(
+                    `get request for ${req.originalUrl} returned null record`
+                )
+                res.status(404).send({
+                    message: 'answers for id ' + id + ' does not exist.',
+                })
+            } else {
+                logger.log(
+                    `get request for ${req.originalUrl} `
+                )
+                res.status(200).send(record)
+            }
+        })
+        .catch((err) => {
+            logger.log(
+                `get request for ${req.originalUrl} faced the following error :  ${err}`
+            )
+            res.status(404).send({
+                message: 'answers for id ' + id + ' does not exist.',
+            })
+        })
 
 }

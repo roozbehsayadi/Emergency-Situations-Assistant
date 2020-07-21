@@ -397,3 +397,12 @@
 {"message":"Server started at 2020:07:21:09:44:30","level":"info"}
 {"message":"db started at 2020:07:21:09:44:32","level":"info"}
 {"message":"Request for closing server at 2020:07:21:09:44:33","level":"info"}
+{"message":"Server started at 2020:07:21:10:24:45","level":"info"}
+{"message":"db started at 2020:07:21:10:24:48","level":"info"}
+{"message":"get request for /user/controlcenteragent@gmail.com/role","level":"info"}
+{"message":"get request for /user/controlcenteragent@gmail.com/role","level":"info"}
+{"message":"Request for closing server at 2020:07:21:10:26:20","level":"info"}
+{"message":"Server started at 2020:07:21:10:26:25","level":"info"}
+{"message":"db started at 2020:07:21:10:26:29","level":"info"}
+{"message":"get request for /user/controlcenteragent@gmail.com/role","level":"info"}
+{"message":"get request for /user/controlcenteragent@gmail.com/role","level":"info"}

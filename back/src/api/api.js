@@ -3,6 +3,8 @@ const router = express.Router();
 const transferData = require('../logic/answers.js');
 const users = require('../logic/users.js');
 const userController = require('../controller/usersController');
+const formController = require('../controller/formsController.js')
+const answerController = require('../controller/answersController')
 const { json } = require('express');
 
 var logger = require('../logger')
@@ -29,93 +31,36 @@ const checkJwt = jwt({
 
 })
 
-router.get('/azin', checkJwt, (req, res) => {
-	res.json({
-		message: 'salam man azinam',
-	})
-})
 ///////////////////////////////////////////////////////auth
-//tested on postman
-router.get('/forms', checkJwt, (req, res) => {
-	transferData
-		.getAllForms()
-		.then((result) => {
-			logger.log(`get request for /forms`)
-			res.status(200).send(result)
-		})
-		.catch((err) => {
-			logger.log(
-				`get request for /forms faced the following error :  ${err}`
-			)
-			res.status(404).send({
-				message: 'forms not found',
-			})
-		})
+
+router.get('/forms', checkJwt, formController.getAll)
+
+router.get('/forms/:id(\\d+)' , checkJwt , (req, res) => {
+    let { id } = req.params
+    username = req.user['https://example.com/email']
+    users
+        .getUserRole(username)
+        .then ((role) => {
+            if (role == "control_center") {
+                answerController.getOne(req , res);
+            }
+            else if (role == "field_agent"){
+                formController.getOne(req , res) ;
+            }
+            else {
+                logger.log(
+                    `access denied for get request ${req.originalUrl}`
+                )
+                res.status(403).send({
+                    message : "access denied"
+                })
+            }
+    })
+
 })
 
+router.get('/role', checkJwt, userController.getRole)
 
-//tested on postman
-
-router.get('/control-center/:name/forms/:id(\\d+)',(req, res) => {
-	let { id } = req.params
-	transferData
-		.getAnswers(id)
-		.then((record) => {
-			if (record === null) {
-				logger.log(
-					`get request for /control-center/${name}/forms/${id} returned null record`
-				)
-				res.status(404).send({
-					message: 'answers for id ' + id + ' does not exist.',
-				})
-			} else {
-				logger.log(
-					`get request for /control-center/${name}/forms/${id} `
-				)
-				res.status(200).send(record)
-			}
-		})
-		.catch((err) => {
-			logger.log(
-				`get request for /control-center/${name}/forms/${id} faced the following error :  ${err}`
-			)
-			res.status(404).send({
-				message: 'answers for id ' + id + ' does not exist.',
-			})
-		})
-})
-
-router.get('/user/:name/role', checkJwt, userController.getRole)
-
-//tested on postman
-
-router.get('/user/:name/forms/:id(\\d+)', (req, res) => {
-	let { name, id } = req.params
-
-	transferData
-		.getForm(id)
-		.then((record) => {
-			if (record === null) {
-				logger.log(
-					`get request for /user/${name}/forms/${id} returned null record`
-				)
-				res.status(404).send({
-					message: 'form with id ' + id + ' does not exist.',
-				})
-			} else {
-				logger.log(`get request for /user/${name}/forms/${id}`)
-				res.status(200).send(record)
-			}
-		})
-		.catch((err) => {
-			logger.log(
-				`get request for /user/${name}/forms/${id} faced the following error :  ${err}`
-			)
-			res.status(404).send({
-				message: 'form with id ' + id + ' does not exist.',
-			})
-		})
-})
 //recieves answers and for each Location field it finds all of the areas
 //that location is inside and store that name of the polygons in the ares field in database
 router.post('/user/:name/forms/:id(\\d+)/post_form',express.json(), (req, res) => {
