@@ -12,6 +12,7 @@ import sendGetRequestAndSet from './functions/sendGetRequestAndSet'
 
 import ControlCenterAgentForms from './components/ControlCenterAgentForms'
 import FieldAgentForms from './components/FieldAgentForms'
+import FormToSubmit from './components/FormToSubmit'
 
 import { LoadingOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
@@ -42,7 +43,7 @@ const App = () => {
 
 	useEffect(() => {
 		if (isAuthenticated && accessToken !== 'None')
-			sendGetRequestAndSet(`user/${email}/role`, accessToken, setUserRole)
+			sendGetRequestAndSet(`role`, accessToken, setUserRole)
 		// getAndSetUserRole(email, accessToken, setUserRole)
 	}, [isAuthenticated, email, accessToken])
 
@@ -112,9 +113,14 @@ const App = () => {
 									) : (
 										<ControlCenterAgentForms
 											token={accessToken}
+											username={email}
 										/>
 									)
 								}
+							/>
+							<Route
+								path="/submit_form/:id"
+								children={<FormToSubmit />}
 							/>
 						</Switch>
 					</Router>
