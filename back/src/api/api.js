@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const transferData = require('../logic/answers.js');
 const users = require('../logic/users.js');
+const userController = require('../controller/usersController');
 const { json } = require('express');
 
 var logger = require('../logger')
@@ -84,27 +85,7 @@ router.get('/control-center/:name/forms/:id(\\d+)',(req, res) => {
 		})
 })
 
-router.get('/user/:name/role', checkJwt, (req, res) => {
-
-	// console.log('email:' + req.user['https://example.com/email'])
-    let { name } = req.params
-    console.log(name)
-
-	transferData
-		.getUserRole(name)
-		.then((role) => {
-			logger.log(`get request for /user/${name}/role`)
-			res.status(200).send(role)
-		})
-		.catch((err) => {
-			logger.log(
-				`get request for /user/${name}/role faced the following error :  ${err}`
-			)
-			res.status(404).send({
-				message: 'user with name ' + name + ' not found.',
-			})
-		})
-})
+router.get('/user/:name/role', checkJwt, userController.getRole)
 
 //tested on postman
 
