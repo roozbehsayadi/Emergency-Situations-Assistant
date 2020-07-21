@@ -10,7 +10,12 @@ exports.getUserRole = function(userName){
         let role ;
         db.find("users" , jsonStr)
             .then ((val) => {
-                res(val.role);
+                if (val == null) {
+                    res(null)
+                }
+                else {
+                    res(val.role);
+                }
             }).catch((err) => {
                 rej(err)
             })

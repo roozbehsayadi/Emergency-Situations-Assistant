@@ -22,6 +22,8 @@ exports.add = (req, res) => {
 }
 
 exports.getOne = (req , res) => {
+    let { id } = req.params
+    console.log("too controller")
     transferData
         .getAnswers(id)
         .then((record) => {

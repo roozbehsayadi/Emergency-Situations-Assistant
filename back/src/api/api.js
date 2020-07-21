@@ -35,9 +35,10 @@ const checkJwt = jwt({
 
 router.get('/forms', checkJwt, formController.getAll)
 
-router.get('/forms/:id(\\d+)' , checkJwt , (req, res) => {
-    let { id } = req.params
+router.get('/forms/:id(\\d+)' ,checkJwt, (req, res) => {
+
     username = req.user['https://example.com/email']
+
     users
         .getUserRole(username)
         .then ((role) => {
@@ -49,7 +50,7 @@ router.get('/forms/:id(\\d+)' , checkJwt , (req, res) => {
             }
             else {
                 logger.log(
-                    `access denied for get request ${req.originalUrl}`
+                    `access denied for get request ${req.originalUrl} for user ${username}`
                 )
                 res.status(403).send({
                     message : "access denied"
