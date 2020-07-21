@@ -35,7 +35,7 @@ router.get('/azin', checkJwt, (req, res) => {
 })
 ///////////////////////////////////////////////////////auth
 //tested on postman
-router.get('/forms', (req, res) => {
+router.get('/forms', checkJwt, (req, res) => {
 	transferData
 		.getAllForms()
 		.then((result) => {
@@ -55,7 +55,7 @@ router.get('/forms', (req, res) => {
 
 //tested on postman
 
-router.get('/control-center/:name/forms/:id(\\d+)', (req, res) => {
+router.get('/control-center/:name/forms/:id(\\d+)',(req, res) => {
 	let { id } = req.params
 	transferData
 		.getAnswers(id)
