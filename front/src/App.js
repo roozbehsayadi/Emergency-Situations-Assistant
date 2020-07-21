@@ -12,7 +12,7 @@ import sendGetRequestAndSet from './functions/sendGetRequestAndSet'
 
 import ControlCenterAgentForms from './components/ControlCenterAgentForms'
 import FieldAgentForms from './components/FieldAgentForms'
-import FormToSubmit from './components/FormToSubmit'
+import FormToSubmit from './components/FormToSubmit/FormToSubmit'
 
 import { LoadingOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
