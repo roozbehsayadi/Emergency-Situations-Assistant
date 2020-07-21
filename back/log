@@ -406,3 +406,4 @@
 {"message":"db started at 2020:07:21:10:26:29","level":"info"}
 {"message":"get request for /user/controlcenteragent@gmail.com/role","level":"info"}
 {"message":"get request for /user/controlcenteragent@gmail.com/role","level":"info"}
+{"message":"Request for closing server at 2020:07:21:11:12:50","level":"info"}
