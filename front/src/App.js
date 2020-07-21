@@ -8,7 +8,7 @@ import {
 
 import { useAuth0 } from '@auth0/auth0-react'
 
-import getAndSetUserRole from './functions/getAndSetUserRole'
+import sendGetRequestAndSet from './functions/sendGetRequestAndSet'
 
 import ControlCenterAgentForms from './components/ControlCenterAgentForms'
 import FieldAgentForms from './components/FieldAgentForms'
@@ -42,7 +42,8 @@ const App = () => {
 
 	useEffect(() => {
 		if (isAuthenticated && accessToken !== 'None')
-			getAndSetUserRole(email, accessToken, setUserRole)
+			sendGetRequestAndSet(`user/${email}/role`, accessToken, setUserRole)
+		// getAndSetUserRole(email, accessToken, setUserRole)
 	}, [isAuthenticated, email, accessToken])
 
 	useEffect(() => {

@@ -1,19 +1,19 @@
 const axios = require('axios').default
 
-const getAndSetUserRole = async (username, accessToken, setUserRole) => {
+const sendGetRequestAndSet = async (api, accessToken, setterFunction) => {
 	axios({
 		method: 'get',
-		url: `http://localhost:9000/user/${username}/role`,
+		url: `http://localhost:9000/${api}`,
 		headers: {
 			Authorization: `Bearer ${accessToken}`,
 		},
 	})
 		.then((response) => {
-			setUserRole(response.data)
+			setterFunction(response.data)
 		})
 		.catch((error) => {
 			console.log(error)
 		})
 }
 
-export default getAndSetUserRole
+export default sendGetRequestAndSet
