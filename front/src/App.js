@@ -73,7 +73,12 @@ const App = () => {
 				{isAuthenticated && (
 					<img src={picture} alt="avatar" className="navbar-avatar" />
 				)}
-				<Menu onClick={handleNavClick} theme="dark" mode="horizontal">
+				<Menu
+					onClick={handleNavClick}
+					selectedKeys={['home']}
+					theme="dark"
+					mode="horizontal"
+				>
 					{isAuthenticated && (
 						<SubMenu title={nickname}>
 							<Menu.Item key="logout">Log out</Menu.Item>
