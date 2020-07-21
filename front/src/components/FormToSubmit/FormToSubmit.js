@@ -58,7 +58,6 @@ const FormToSubmit = ({ token }) => {
 
 	return (
 		<div>
-			<h1>{JSON.stringify(markers)}</h1>
 			<Title>{formTitle}</Title>
 			<Form name={`form_${id}`} onFinish={handleSubmit}>
 				<Space direction="vertical" style={{ marginTop: '2%' }}>

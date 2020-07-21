@@ -44,14 +44,13 @@ const MapComponent = ({
 					: '400px',
 				marginBottom: description.hasOwnProperty('options')
 					? '0%'
-					: '50px',
+					: '65px',
 			}}
 		>
 			{description.hasOwnProperty('options') ? (
 				SelectComponent(description)
 			) : (
 				<>
-					<p>{JSON.stringify(markers)}</p>
 					<Map
 						google={google}
 						zoom={14}
