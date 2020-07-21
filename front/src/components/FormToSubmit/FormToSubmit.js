@@ -35,22 +35,19 @@ const FormToSubmit = ({ token }) => {
 		}
 	}, [formInfo])
 
-	const [markers, setMarkers] = useState([])
-	useEffect(() => {
-		setMarkers(
-			formFields
-				.filter((field) => field.type === 'Location')
-				.map((field) => {
-					return { lat: 35.802062, long: 51.393561 }
-				})
-		)
-	}, [formFields])
+	const [markers, setMarkers] = useState({})
 
 	const [formComponents, setFormComponents] = useState([])
 	useEffect(() => {
 		setFormComponents(
 			formFields.map((field, index) => {
-				return getRespectiveComponent(field, index)
+				return getRespectiveComponent(
+					id,
+					field,
+					index,
+					markers,
+					setMarkers
+				)
 			})
 		)
 	}, [formFields])
@@ -61,6 +58,7 @@ const FormToSubmit = ({ token }) => {
 
 	return (
 		<div>
+			<h1>{JSON.stringify(markers)}</h1>
 			<Title>{formTitle}</Title>
 			<Form name={`form_${id}`} onFinish={handleSubmit}>
 				<Space direction="vertical" style={{ marginTop: '2%' }}>
@@ -82,7 +80,7 @@ const FormToSubmit = ({ token }) => {
 	)
 }
 
-const getRespectiveComponent = (field, index) => {
+const getRespectiveComponent = (formId, field, index, markers, setMarkers) => {
 	if (field.type === 'Text')
 		return <TextComponent description={field} index={index} />
 	if (field.type === 'Number')
@@ -90,8 +88,16 @@ const getRespectiveComponent = (field, index) => {
 	if (field.type === 'Date')
 		return <DateComponent description={field} index={index} />
 	if (field.type === 'Location')
-		return <MapComponent description={field} index={index} />
-	return <h1>COMPONENTTTT!</h1>
+		return (
+			<MapComponent
+				description={field}
+				index={index}
+				markers={markers}
+				setMarkers={setMarkers}
+				formId={formId}
+			/>
+		)
+	return <h1>Unknown component!</h1>
 }
 
 export default FormToSubmit
