@@ -42,7 +42,7 @@ const App = () => {
 
 	useEffect(() => {
 		if (isAuthenticated && accessToken !== 'None')
-			sendGetRequestAndSet(`user/${email}/role`, accessToken, setUserRole)
+			sendGetRequestAndSet(`role`, accessToken, setUserRole)
 		// getAndSetUserRole(email, accessToken, setUserRole)
 	}, [isAuthenticated, email, accessToken])
 
