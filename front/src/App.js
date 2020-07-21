@@ -37,7 +37,17 @@ const App = () => {
 		getAccessTokenSilently,
 	} = useAuth0()
 
-	var email = 'None'
+	const [nickname, setNickname] = useState(null)
+	const [picture, setPicture] = useState(null)
+	const [email, setEmail] = useState(null)
+	useEffect(() => {
+		if (user) {
+			setNickname(user.nickname)
+			setPicture(user.picture)
+			setEmail(user.email)
+		}
+	}, [user])
+
 	const [userRole, setUserRole] = useState('None')
 	const [accessToken, setAccessToken] = useState('None')
 
@@ -65,8 +75,8 @@ const App = () => {
 			</div>
 		)
 
-	const { nickname, picture } = user
-	email = user.email
+	// const { nickname, picture } = user
+	// email = user.email
 
 	return (
 		<Layout className="layout">
