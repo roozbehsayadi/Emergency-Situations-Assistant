@@ -3,6 +3,7 @@ const router = express.Router();
 const transferData = require('../logic/answers.js');
 const users = require('../logic/users.js');
 const { json } = require('express');
+
 var logger = require('../logger')
 require('dotenv').config()
 ////////////////////////////////////////////////////////auth
@@ -24,6 +25,7 @@ const checkJwt = jwt({
 	audience: process.env.api_identifier,
 	issuer: `https://${process.env.domain}/`,
 	algorithms: ['RS256'],
+
 })
 
 router.get('/azin', checkJwt, (req, res) => {
@@ -50,7 +52,9 @@ router.get('/forms', (req, res) => {
 		})
 })
 
+
 //tested on postman
+
 router.get('/control-center/:name/forms/:id(\\d+)', (req, res) => {
 	let { id } = req.params
 	transferData
@@ -79,10 +83,14 @@ router.get('/control-center/:name/forms/:id(\\d+)', (req, res) => {
 			})
 		})
 })
-router.get('/user/:name/role', (req, res) => {
-	let { name } = req.params
 
-	users
+router.get('/user/:name/role', checkJwt, (req, res) => {
+
+	// console.log('email:' + req.user['https://example.com/email'])
+    let { name } = req.params
+    console.log(name)
+
+	transferData
 		.getUserRole(name)
 		.then((role) => {
 			logger.log(`get request for /user/${name}/role`)
@@ -99,6 +107,7 @@ router.get('/user/:name/role', (req, res) => {
 })
 
 //tested on postman
+
 router.get('/user/:name/forms/:id(\\d+)', (req, res) => {
 	let { name, id } = req.params
 
@@ -149,4 +158,5 @@ router.post('/user/:name/forms/:id(\\d+)/post_form',express.json(), (req, res) =
 })
 
 
-module.exports = router;
+
+module.exports = router

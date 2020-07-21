@@ -394,3 +394,6 @@
 {"message":"Server started at 2020:07:20:08:27:55","level":"info"}
 {"message":"db started at 2020:07:20:08:27:59","level":"info"}
 {"message":"Request for closing server at 2020:07:20:08:28:03","level":"info"}
+{"message":"Server started at 2020:07:21:09:44:30","level":"info"}
+{"message":"db started at 2020:07:21:09:44:32","level":"info"}
+{"message":"Request for closing server at 2020:07:21:09:44:33","level":"info"}

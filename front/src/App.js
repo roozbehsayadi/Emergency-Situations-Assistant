@@ -1,18 +1,27 @@
 import React, { useState, useEffect } from 'react'
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect,
+} from 'react-router-dom'
+
 import { useAuth0 } from '@auth0/auth0-react'
+
+import getAndSetUserRole from './functions/getAndSetUserRole'
+
+import ControlCenterAgentForms from './components/ControlCenterAgentForms'
+import FieldAgentForms from './components/FieldAgentForms'
+
 import { LoadingOutlined } from '@ant-design/icons'
-
-import getUserRole from './functions/getUserRole'
-
 import 'antd/dist/antd.css'
-
 import { Layout, Menu } from 'antd'
-const { Header, Content, Footer } = Layout
+const { Header, Content } = Layout
 const { SubMenu } = Menu
 
 const App = () => {
 	const handleNavClick = (e) => {
-		if (e.key === 'home') console.log('already in home')
+		if (e.key === 'home') console.log('Redirect to home')
 		else if (e.key === 'login') loginWithRedirect()
 		else if (e.key === 'logout')
 			logout({ returnTo: window.location.origin })
@@ -24,7 +33,28 @@ const App = () => {
 		loginWithRedirect,
 		logout,
 		isAuthenticated,
+		getAccessTokenSilently,
 	} = useAuth0()
+
+	var email = 'None'
+	const [userRole, setUserRole] = useState('None')
+	const [accessToken, setAccessToken] = useState('None')
+
+	useEffect(() => {
+		if (isAuthenticated && accessToken !== 'None')
+			getAndSetUserRole(email, accessToken, setUserRole)
+	}, [isAuthenticated, email, accessToken])
+
+	useEffect(() => {
+		const temp = async () => {
+			setAccessToken(
+				await getAccessTokenSilently({
+					audience: process.env.REACT_APP_AUTH0_API_IDENTIFIER,
+				})
+			)
+		}
+		temp()
+	}, [getAccessTokenSilently, accessToken])
 
 	if (isLoading)
 		return (
@@ -33,7 +63,8 @@ const App = () => {
 			</div>
 		)
 
-	const { nickname, picture, email } = user
+	const { nickname, picture } = user
+	email = user.email
 
 	return (
 		<Layout className="layout">
@@ -54,12 +85,33 @@ const App = () => {
 				</Menu>
 			</Header>
 			<Content>
-				{isAuthenticated && (
-					<h1>
-						{getUserRole(email).then((val) => {
-							return val
-						})}
-					</h1>
+				{isAuthenticated && userRole === 'None' && (
+					<div className="loadingCenterContainer">
+						<LoadingOutlined />
+					</div>
+				)}
+				{isAuthenticated && userRole !== 'None' && (
+					<Router>
+						<Switch>
+							<Route
+								exact
+								path="/"
+								children={<Redirect to="/forms" />}
+							/>
+							<Route
+								path="/forms"
+								children={
+									userRole === 'field_agent' ? (
+										<FieldAgentForms token={accessToken} />
+									) : (
+										<ControlCenterAgentForms
+											token={accessToken}
+										/>
+									)
+								}
+							/>
+						</Switch>
+					</Router>
 				)}
 			</Content>
 		</Layout>
