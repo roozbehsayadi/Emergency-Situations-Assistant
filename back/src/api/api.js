@@ -81,8 +81,10 @@ router.get('/control-center/:name/forms/:id(\\d+)', (req, res) => {
 })
 
 router.get('/user/:name/role', checkJwt, (req, res) => {
+
+	// console.log('email:' + req.user['https://example.com/email'])
     let { name } = req.params
-    console.log(req.user)
+    console.log(name)
 
 	transferData
 		.getUserRole(name)
