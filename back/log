@@ -437,3 +437,146 @@
 {"message":"Server started at 2020:07:21:11:34:50","level":"info"}
 {"message":"db started at 2020:07:21:11:34:52","level":"info"}
 {"message":"Request for closing server at 2020:07:21:11:36:27","level":"info"}
+{"message":"Server started at 2020:07:21:11:36:31","level":"info"}
+{"message":"db started at 2020:07:21:11:36:34","level":"info"}
+{"message":"access denied for get request /forms/2","level":"info"}
+{"message":"Request for closing server at 2020:07:21:12:33:22","level":"info"}
+{"message":"Server started at 2020:07:21:12:35:06","level":"info"}
+{"message":"db started at 2020:07:21:12:35:09","level":"info"}
+{"message":"post request for /forms/2 faced the following error :  ReferenceError: name is not defined","level":"info"}
+{"message":"Request for closing server at 2020:07:21:12:36:39","level":"info"}
+{"message":"Server started at 2020:07:21:12:38:57","level":"info"}
+{"message":"db started at 2020:07:21:12:39:01","level":"info"}
+{"message":"post request for /forms/2","level":"info"}
+{"message":"record inserted to collection answers database at 2020:07:21:12:40:00","level":"info"}
+{"message":"Request for closing server at 2020:07:21:15:45:54","level":"info"}
+{"message":"Server started at 2020:07:21:15:51:43","level":"info"}
+{"message":"db started at 2020:07:21:15:51:45","level":"info"}
+{"message":"Request for closing server at 2020:07:21:15:52:27","level":"info"}
+{"message":"Server started at 2020:07:21:15:52:33","level":"info"}
+{"message":"db started at 2020:07:21:15:52:35","level":"info"}
+{"message":"get request for /forms faced the following error :  ReferenceError: element is not defined","level":"info"}
+{"message":"Request for closing server at 2020:07:21:15:53:08","level":"info"}
+{"message":"Server started at 2020:07:21:15:53:14","level":"info"}
+{"message":"db started at 2020:07:21:15:53:16","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:15:53:33","level":"info"}
+{"message":"Server started at 2020:07:21:15:53:51","level":"info"}
+{"message":"db started at 2020:07:21:15:53:53","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:15:54:34","level":"info"}
+{"message":"Server started at 2020:07:21:15:54:38","level":"info"}
+{"message":"db started at 2020:07:21:15:54:40","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:15:55:14","level":"info"}
+{"message":"Server started at 2020:07:21:15:55:21","level":"info"}
+{"message":"db started at 2020:07:21:15:55:23","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:15:56:00","level":"info"}
+{"message":"Server started at 2020:07:21:15:56:07","level":"info"}
+{"message":"db started at 2020:07:21:15:56:10","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:15:58:01","level":"info"}
+{"message":"Server started at 2020:07:21:15:58:08","level":"info"}
+{"message":"db started at 2020:07:21:15:58:16","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:15:58:35","level":"info"}
+{"message":"Server started at 2020:07:21:15:58:39","level":"info"}
+{"message":"db started at 2020:07:21:15:58:41","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:16:23:42","level":"info"}
+{"message":"Server started at 2020:07:21:16:25:32","level":"info"}
+{"message":"db started at 2020:07:21:16:25:34","level":"info"}
+{"message":"get request for /forms faced the following error :  ReferenceError: forms is not defined","level":"info"}
+{"message":"Request for closing server at 2020:07:21:16:26:46","level":"info"}
+{"message":"Server started at 2020:07:21:16:26:55","level":"info"}
+{"message":"db started at 2020:07:21:16:26:58","level":"info"}
+{"message":"get request for /forms faced the following error :  ReferenceError: forms is not defined","level":"info"}
+{"message":"Request for closing server at 2020:07:21:16:27:47","level":"info"}
+{"message":"Server started at 2020:07:21:16:28:20","level":"info"}
+{"message":"db started at 2020:07:21:16:28:22","level":"info"}
+{"message":"Request for closing server at 2020:07:21:16:29:23","level":"info"}
+{"message":"Server started at 2020:07:21:16:29:45","level":"info"}
+{"message":"db started at 2020:07:21:16:29:47","level":"info"}
+{"message":"Request for closing server at 2020:07:21:16:30:21","level":"info"}
+{"message":"Server started at 2020:07:21:16:30:27","level":"info"}
+{"message":"db started at 2020:07:21:16:30:29","level":"info"}
+{"message":"Request for closing server at 2020:07:21:16:30:55","level":"info"}
+{"message":"Server started at 2020:07:21:16:31:23","level":"info"}
+{"message":"db started at 2020:07:21:16:31:25","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:16:32:31","level":"info"}
+{"message":"Server started at 2020:07:21:16:32:37","level":"info"}
+{"message":"db started at 2020:07:21:16:32:39","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:16:35:02","level":"info"}
+{"message":"Server started at 2020:07:21:16:35:08","level":"info"}
+{"message":"db started at 2020:07:21:16:35:10","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:16:41:42","level":"info"}
+{"message":"Server started at 2020:07:21:17:17:43","level":"info"}
+{"message":"db started at 2020:07:21:17:17:46","level":"info"}
+{"message":"no forms for get request /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:17:18:06","level":"info"}
+{"message":"Server started at 2020:07:21:17:18:10","level":"info"}
+{"message":"db started at 2020:07:21:17:18:13","level":"info"}
+{"message":"no forms for get request /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:18:19:49","level":"info"}
+{"message":"Server started at 2020:07:21:18:19:55","level":"info"}
+{"message":"Server started at 2020:07:21:18:21:21","level":"info"}
+{"message":"db started at 2020:07:21:18:21:23","level":"info"}
+{"message":"Request for closing server at 2020:07:21:18:22:31","level":"info"}
+{"message":"Server started at 2020:07:21:18:22:33","level":"info"}
+{"message":"db started at 2020:07:21:18:22:35","level":"info"}
+{"message":"Request for closing server at 2020:07:21:18:23:03","level":"info"}
+{"message":"Server started at 2020:07:21:18:23:45","level":"info"}
+{"message":"db started at 2020:07:21:18:23:49","level":"info"}
+{"message":"Request for closing server at 2020:07:21:18:24:26","level":"info"}
+{"message":"Server started at 2020:07:21:18:24:39","level":"info"}
+{"message":"db started at 2020:07:21:18:24:41","level":"info"}
+{"message":"Request for closing server at 2020:07:21:18:25:46","level":"info"}
+{"message":"Server started at 2020:07:21:18:25:49","level":"info"}
+{"message":"Request for closing server at 2020:07:21:18:25:50","level":"info"}
+{"message":"Server started at 2020:07:21:18:25:56","level":"info"}
+{"message":"db started at 2020:07:21:18:25:57","level":"info"}
+{"message":"Request for closing server at 2020:07:21:18:26:43","level":"info"}
+{"message":"Server started at 2020:07:21:18:26:46","level":"info"}
+{"message":"db started at 2020:07:21:18:26:48","level":"info"}
+{"message":"Request for closing server at 2020:07:21:18:28:22","level":"info"}
+{"message":"Server started at 2020:07:21:18:28:24","level":"info"}
+{"message":"db started at 2020:07:21:18:28:27","level":"info"}
+{"message":"Request for closing server at 2020:07:21:18:29:12","level":"info"}
+{"message":"Server started at 2020:07:21:18:29:25","level":"info"}
+{"message":"db started at 2020:07:21:18:29:27","level":"info"}
+{"message":"Request for closing server at 2020:07:21:18:29:46","level":"info"}
+{"message":"Server started at 2020:07:21:18:29:57","level":"info"}
+{"message":"db started at 2020:07:21:18:29:59","level":"info"}
+{"message":"Request for closing server at 2020:07:21:18:31:11","level":"info"}
+{"message":"Server started at 2020:07:21:18:31:15","level":"info"}
+{"message":"db started at 2020:07:21:18:31:18","level":"info"}
+{"message":"Request for closing server at 2020:07:21:18:31:36","level":"info"}
+{"message":"Server started at 2020:07:21:18:31:58","level":"info"}
+{"message":"db started at 2020:07:21:18:32:00","level":"info"}
+{"message":"Request for closing server at 2020:07:21:18:32:34","level":"info"}
+{"message":"Server started at 2020:07:21:18:32:37","level":"info"}
+{"message":"db started at 2020:07:21:18:32:39","level":"info"}
+{"message":"Request for closing server at 2020:07:21:19:34:06","level":"info"}
+{"message":"Server started at 2020:07:21:19:34:13","level":"info"}
+{"message":"db started at 2020:07:21:19:34:16","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:19:38:34","level":"info"}
+{"message":"Server started at 2020:07:21:19:38:41","level":"info"}
+{"message":"db started at 2020:07:21:19:38:45","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:19:41:28","level":"info"}
+{"message":"Server started at 2020:07:21:19:41:34","level":"info"}
+{"message":"db started at 2020:07:21:19:41:36","level":"info"}
+{"message":"Request for closing server at 2020:07:21:19:41:57","level":"info"}
+{"message":"Server started at 2020:07:21:19:42:32","level":"info"}
+{"message":"db started at 2020:07:21:19:42:34","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:19:43:13","level":"info"}
+{"message":"Server started at 2020:07:21:19:43:44","level":"info"}
+{"message":"db started at 2020:07:21:19:43:48","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:19:44:07","level":"info"}
