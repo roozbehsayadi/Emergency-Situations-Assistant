@@ -107,6 +107,7 @@ const App = () => {
 									) : (
 										<ControlCenterAgentForms
 											token={accessToken}
+											username={email}
 										/>
 									)
 								}
