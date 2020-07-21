@@ -11,7 +11,6 @@ const FieldAgentForms = ({ token, username }) => {
 	const [forms, setForms] = useState(null)
 	useEffect(() => {
 		sendGetRequestAndSet('forms', token, setForms)
-		console.log(forms)
 	}, [])
 
 	const [tableForms, setTableForms] = useState(null)
@@ -41,7 +40,6 @@ const FieldAgentForms = ({ token, username }) => {
 			loading={forms === null}
 			onRow={(record, index) => ({
 				onClick: () => {
-					console.log('CLICKED!')
 					history.push(`/submit_form/${record.id}/`)
 				},
 			})}
