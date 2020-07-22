@@ -2,10 +2,12 @@ import React from 'react'
 
 import {Table} from "antd";
 import {Layout} from "antd";
+import {withRouter} from 'react-router-dom';
 
 class ControlCenterAgentForms extends React.Component {
     constructor(props) {
         super(props);
+        console.log(this.props);
         this.state = {
             title: 'forms list',
             forms: [],
@@ -44,28 +46,10 @@ class ControlCenterAgentForms extends React.Component {
         })
 
         const columns = [
-            {
-                title: '#',
-                dataIndex: 'key',
-                key: 'key',
-                width: '1%',
-            },
-            {
-                title: 'id',
-                dataIndex: 'id',
-                key: 'id',
-                width: '4%',
-            },
-            {
-                title: 'title',
-                dataIndex: 'title',
-                key: 'title',
-            },
-            {
-                title: 'number of submissions',
-                dataIndex: 'submit_count',
-                key: 'submit_count',
-            },
+            {title: '#', dataIndex: 'key', key: 'key', width: '1%',},
+            {title: 'id', dataIndex: 'id', key: 'id', width: '4%',},
+            {title: 'title', dataIndex: 'title', key: 'title',},
+            {title: 'number of submissions', dataIndex: 'submit_count', key: 'submit_count',},
         ]
         return (
             <>
@@ -84,9 +68,7 @@ class ControlCenterAgentForms extends React.Component {
                             columns={columns}
                             onRow={(record, index) => ({
                                 onClick: () => {
-                                    // this.nextPath(
-                                        // TODO: url to view the form.
-                                    // )
+                                    this.nextPath('submissions/' + record.id)
                                 }
                             })}
                         />
@@ -97,4 +79,4 @@ class ControlCenterAgentForms extends React.Component {
     }
 }
 
-export default ControlCenterAgentForms
+export default withRouter(ControlCenterAgentForms)
