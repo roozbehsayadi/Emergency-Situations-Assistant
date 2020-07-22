@@ -14,8 +14,6 @@ import MapComponent from './MapComponent'
 
 const { Title } = Typography
 
-var isJson = require('is-valid-json')
-
 const canParse = (s) => {
 	try {
 		JSON.parse(s)

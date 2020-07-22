@@ -4,6 +4,7 @@ import {
 	Switch,
 	Route,
 	Redirect,
+	useHistory,
 } from 'react-router-dom'
 
 import { useAuth0 } from '@auth0/auth0-react'
@@ -21,8 +22,10 @@ const { Header, Content } = Layout
 const { SubMenu } = Menu
 
 const App = () => {
+	let history = useHistory()
+
 	const handleNavClick = (e) => {
-		if (e.key === 'home') console.log('Redirect to home')
+		if (e.key === 'home') history.push('/')
 		else if (e.key === 'login') loginWithRedirect()
 		else if (e.key === 'logout')
 			logout({ returnTo: window.location.origin })
@@ -75,9 +78,6 @@ const App = () => {
 			</div>
 		)
 
-	// const { nickname, picture } = user
-	// email = user.email
-
 	return (
 		<Layout className="layout">
 			<Header>
@@ -107,39 +107,43 @@ const App = () => {
 						<LoadingOutlined />
 					</div>
 				)}
-				{isAuthenticated && userRole !== 'None' && (
-					<Router>
-						<Switch>
-							<Route
-								exact
-								path="/"
-								children={<Redirect to="/forms" />}
-							/>
-							<Route
-								path="/forms"
-								children={
-									userRole === 'field_agent' ? (
-										<FieldAgentForms token={accessToken} />
-									) : (
-										<ControlCenterAgentForms
+				<Router>
+					<Switch>
+						{isAuthenticated && userRole !== 'None' && (
+							<>
+								<Route
+									exact
+									path="/"
+									children={<Redirect to="/forms" />}
+								/>
+								<Route
+									path="/forms"
+									children={
+										userRole === 'field_agent' ? (
+											<FieldAgentForms
+												token={accessToken}
+											/>
+										) : (
+											<ControlCenterAgentForms
+												token={accessToken}
+												username={email}
+											/>
+										)
+									}
+								/>
+								<Route
+									path="/submit_form/:id"
+									children={
+										<FormToSubmit
 											token={accessToken}
 											username={email}
 										/>
-									)
-								}
-							/>
-							<Route
-								path="/submit_form/:id"
-								children={
-									<FormToSubmit
-										token={accessToken}
-										username={email}
-									/>
-								}
-							/>
-						</Switch>
-					</Router>
-				)}
+									}
+								/>
+							</>
+						)}
+					</Switch>
+				</Router>
 			</Content>
 		</Layout>
 	)
