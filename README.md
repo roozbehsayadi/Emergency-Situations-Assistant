@@ -103,3 +103,7 @@ by sending a DELETE request, you can delete the respective polygon from the data
 #### other endpoints
 
 these are out private endpoints so we used authentication in order to secure the accesses.
+
+## Front-end
+
+I think the front-end is pretty self-explanatory, As all front-ends should be.
