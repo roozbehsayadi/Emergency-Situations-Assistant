@@ -105,7 +105,7 @@ const FormToSubmit = ({ token, username }) => {
 		}
 		console.log(values)
 		values = turnSubmissionIntoArray(values)
-		sendPostRequest(`user/${username}/forms/${formId}/post_form`, token)
+		sendPostRequest(`user/${username}/forms/${id}/post_form`, token, values)
 	}
 
 	return (
