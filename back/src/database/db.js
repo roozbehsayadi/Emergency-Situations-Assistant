@@ -79,3 +79,15 @@ exports.deleteOne = function (collection , condition) {
     })
 }
 
+exports.findSel = function (collection , condition , fields) {
+    return new Promise((res , req) => {
+        condition = JSON.parse(condition)
+        fields = JSON.parse(fields)
+        db.collection(collection).find(condition , fields).toArray(function(err, result) {
+            if (err)  rej(err);
+            res(result)
+        });
+    })
+
+}
+

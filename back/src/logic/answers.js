@@ -6,11 +6,9 @@ const polygons = require ('./polygons')
 
 
 exports.insertToAnswers = async function (answers , name , id){
-
       let jsonObj = {} ;
       jsonObj["username"] = name ;
       jsonObj["formId"] = id ;
-      jsonObj["areas"] = [];
       areas = [];
       const promises = answers.map(async (element) => {
           if (element.type == "Location" &&
@@ -25,7 +23,7 @@ exports.insertToAnswers = async function (answers , name , id){
         return element !== undefined;
       });
 
-    jsonObj["answers"] = answers ;
+      jsonObj["answers"] = answers ;
       db.insert("answers" , jsonObj)
           .then ((mes) => {
               res("added")
@@ -38,15 +36,25 @@ exports.insertToAnswers = async function (answers , name , id){
 
 exports.getAnswers = function (id) {
     return new Promise ((res , rej) => {
-        let jsonStr = " {\"formId\" : \"" + id + "\" }" ;
-        db.findMany("answers" , jsonStr)
-            .then ((val) => {
-                res(val);
+        let cond = " {\"id\" : \"" + id + "\" }" ;
+        db.find("forms" , cond). then ((form) => {
+            var returnVal = {}
+            returnVal["title"] = form.title ;
+            let jsonStr = " {\"formId\" : \"" + id + "\" }" ;
+            let fields = " {\"answers\" : \"" + 1 + "\" }" ;
+            console.log(form.title)
+            db.findMany("answers" , jsonStr )
+                .then ((val) => {
+                    returnVal["answers"] = val
 
-            })
-            .catch((err) => {
-                rej(err)
-            })
+                    res(returnVal);
+
+                })
+                .catch((err) => {
+                    rej(err)
+                })
+        })
+
     });
 }
 

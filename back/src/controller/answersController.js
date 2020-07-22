@@ -8,8 +8,8 @@ var logger = require ('../logger')
 
 exports.add = (req, res) => {
     let {id} = req.params;
-    // username = req.user['https://example.com/email']
-    username = "fieldagent@gmail.com" ;
+    username = req.user['https://example.com/email']
+
     users.getUserRole(username).then ((role) => {
         if(role == "field_agent"){
             try {
@@ -43,7 +43,7 @@ exports.add = (req, res) => {
 
 exports.getOne = (req , res) => {
     let { id } = req.params
-    console.log("too controller")
+
     answers
         .getAnswers(id)
         .then((record) => {
