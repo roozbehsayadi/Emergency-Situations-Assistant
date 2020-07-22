@@ -122,7 +122,7 @@ the number of answers for each unique form existing in database. for field-agent
 
 -   **/forms/:id**: this is a GET api that receives an authorization token and checks the role of the user, for control-center it returns all answers for the respective forms from answers collection of the database. for field-agent it returns the form from the forms database.
 
-this POST api is for receiving the answers for the respective form and user, it first authorizes the user and if it is a field-agent, the information will be added to the answers database.
+for submitting the answers you should send a POST request to this path. it first authorizes the user and if it is a field-agent, the information will be added to the answers database.
 
 -  **/role**: by sending a GET request, you receive the role of the user in the authentication token
 
