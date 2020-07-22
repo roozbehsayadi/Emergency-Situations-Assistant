@@ -69,7 +69,8 @@ exports.isIn =function (coordinates){
         db.findAll("polygons").then((polygons) => {
             result = []
             polygons.forEach(element => {
-                if (inside(coordinates , element.geometry.coordinates[0]))
+
+                if (inside([coordinates[1] , coordinates[0]] , element.geometry.coordinates[0]))
                     result.push(element.properties.name) ;
             });
 
