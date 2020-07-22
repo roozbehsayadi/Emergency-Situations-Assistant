@@ -36,7 +36,6 @@ router.post('/forms/:id(\\d+)', checkJwt, express.json(), answerController.add)
 
 router.get('/forms/:id(\\d+)', checkJwt, (req, res) => {
     username = req.user['https://example.com/email']
-    // username = "controlcenteragent@gmail.com"
 
 	users.getUserRole(username).then((role) => {
 		if (role == 'control_center') {
@@ -55,28 +54,5 @@ router.get('/forms/:id(\\d+)', checkJwt, (req, res) => {
 })
 
 
-//recieves answers and for each Location field it finds all of the areas
-//that location is inside and store that name of the polygons in the ares field in database
-router.post(
-	'/user/:name/forms/:id(\\d+)/post_form',
-	express.json(),
-	(req, res) => {
-		let { name, id } = req.params
-		try {
-			transferData.insertToAnswers(req.body, name, id)
-			logger.log(`post request for /user/${name}/forms/${id}/post_form`)
-			res.status(200).send({
-				message: 'added.',
-			})
-		} catch (err) {
-			logger.log(
-				`post request for /user/${name}/forms/${id}/post_form faced the following error :  ${err}`
-			)
-			res.send({
-				message: 'problem adding new answers to database.',
-			})
-		}
-	}
-)
 
 module.exports = router
