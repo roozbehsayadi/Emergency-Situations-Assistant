@@ -13,29 +13,15 @@ class ControlCenterAgentSubmissionList extends React.Component {
             form_info: {},
             title: '',
         }
-        console.log(this.props.id)
         this.handleTableCreation = this.handleTableCreation.bind(this)
     }
 
     handleTableCreation = (data) => {
         this.setState({
-            answers: data,
-        })
-        if (this.state.answers.length > 0) {
-            let answer = this.state.answers[0]
-            this.handleFormInfo({
-                title: answer.title,
-                id: answer.formId,
-            })
-        }
-    }
-
-    handleFormInfo = (data) => {
-        this.setState({
-            form_info: data,
+            answers: data.answers,
         })
         this.setState({
-            title: `submissions of form ${data.title}`
+            title: data.title,
         })
     }
 
@@ -54,7 +40,10 @@ class ControlCenterAgentSubmissionList extends React.Component {
             let dict = {}
             console.log(answer.answers)
             answer.answers.forEach((value, index) => {
-                dict[value.name] = value.answer;
+                if (value.type !== "Location")
+                    dict[value.name] = value.answer;
+                else
+                    dict[value.name] = value.areas.toString();
             })
             return {
                 key: index + 1,
@@ -91,11 +80,7 @@ class ControlCenterAgentSubmissionList extends React.Component {
                             marginTop: '2%',
                         }}
                     >
-                        <h1>Oh you're a control center agent. Here are submissions for
-                            form {this.state.form_info.title}</h1>
-                        <h1>form id:
-                            {this.state.form_info.id}
-                        </h1>
+                        <h1>Here are submissions for form "{this.state.title}"</h1>
                         <Table
                             dataSource={answers}
                             columns={columns}
