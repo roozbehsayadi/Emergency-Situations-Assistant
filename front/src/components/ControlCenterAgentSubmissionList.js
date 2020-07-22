@@ -86,9 +86,7 @@ class ControlCenterAgentSubmissionList extends React.Component {
                             columns={columns}
                             onRow={(record, index) => ({
                                 onClick: () => {
-                                    // this.nextPath(
-                                    // TODO: url to view the form.
-                                    // )
+                                    this.nextPath(`/submission/${this.props.match.params.id}/${record.id}`)
                                 }
                             })}
                         />

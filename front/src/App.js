@@ -18,6 +18,7 @@ import { LoadingOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
 import { Layout, Menu } from 'antd'
 import ControlCenterAgentSubmissionList from "./components/ControlCenterAgentSubmissionList";
+import ControlCenterAgentSubmissionView from "./components/ControlCenterAgentSubmissionView";
 const { Header, Content } = Layout
 const { SubMenu } = Menu
 
@@ -133,6 +134,15 @@ const App = () => {
 								path="/submissions/:id"
 								children={
 									<ControlCenterAgentSubmissionList
+										token={accessToken}
+										username={email}
+									/>
+								}
+							/>
+							<Route
+								path="/submission/:form_id/:id"
+								children={
+									<ControlCenterAgentSubmissionView
 										token={accessToken}
 										username={email}
 									/>
