@@ -140,15 +140,6 @@ const App = () => {
 								}
 							/>
 							<Route
-								path="/submission/:form_id/:id"
-								children={
-									<ControlCenterAgentSubmissionView
-										token={accessToken}
-										username={email}
-									/>
-								}
-							/>
-							<Route
 								path="/submit_form/:id"
 								children={
 									<FormToSubmit
