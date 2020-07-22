@@ -5,18 +5,21 @@ const users = require('../logic/users.js')
 const userController = require('../controller/usersController')
 const formController = require('../controller/formsController.js')
 const answerController = require('../controller/answersController')
+<<<<<<< HEAD
 const { json } = require('express')
 
+=======
+const { json } = require('express');
+>>>>>>> e9f694c800be8de235f04427f03ce34fc844fdc9
 var logger = require('../logger')
 require('dotenv').config()
-////////////////////////////////////////////////////////auth
 const jwt = require('express-jwt')
 const jwtAuthz = require('express-jwt-authz')
-const jwksRsa = require('jwks-rsa')
+const jwksRsa = require('jwks-rsa');
+const { SigningKeyNotFoundError } = require('jwks-rsa');
+
 const checkJwt = jwt({
-	// Dynamically provide a signing key
-	// based on the kid in the header and
-	// the signing keys provided by the JWKS endpoint.
+
 	secret: jwksRsa.expressJwtSecret({
 		cache: true,
 		rateLimit: true,
@@ -24,15 +27,30 @@ const checkJwt = jwt({
 		jwksUri: `https://${process.env.domain}/.well-known/jwks.json`,
 	}),
 
-	// Validate the audience and the issuer.
 	audience: process.env.api_identifier,
 	issuer: `https://${process.env.domain}/`,
 	algorithms: ['RS256'],
 })
 
-///////////////////////////////////////////////////////auth
-
 router.get('/forms', checkJwt, formController.getAll)
+///////////////////////////////////////////////unit test
+describe('GET /films-list', () => {
+    it('should return a list of films when called', done => {
+      chai
+        .request(app)
+        .get('/films-list')
+        .end((err, res) => {
+          res.should.have.status(200);
+          expect(res.body).to.deep.equal(starwarsFilmListMock);
+          done();
+        });
+    });
+  });
+//////////////////////////////////////////////unit test
+
+router.get('/role', checkJwt, userController.getRole)
+
+router.post('/forms/:id(\\d+)', checkjwt ,express.json(), answerController.add)
 
 router.get('/forms/:id(\\d+)', checkJwt, (req, res) => {
 	username = req.user['https://example.com/email']
@@ -52,6 +70,7 @@ router.get('/forms/:id(\\d+)', checkJwt, (req, res) => {
 		}
 	})
 })
+<<<<<<< HEAD
 
 router.get('/role', checkJwt, userController.getRole)
 
@@ -80,3 +99,6 @@ router.post(
 )
 
 module.exports = router
+=======
+module.exports = router
+>>>>>>> e9f694c800be8de235f04427f03ce34fc844fdc9
