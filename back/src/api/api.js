@@ -34,9 +34,9 @@ router.get('/role', checkJwt, userController.getRole)
 
 router.post('/forms/:id(\\d+)', checkJwt, express.json(), answerController.add)
 
-router.get('/forms/:id(\\d+)',  (req, res) => {
-    // username = req.user['https://example.com/email']
-    username = "controlcenteragent@gmail.com"
+router.get('/forms/:id(\\d+)', checkJwt, (req, res) => {
+    username = req.user['https://example.com/email']
+    // username = "controlcenteragent@gmail.com"
 
 	users.getUserRole(username).then((role) => {
 		if (role == 'control_center') {
