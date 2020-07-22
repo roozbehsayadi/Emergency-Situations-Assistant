@@ -22,6 +22,7 @@ class ControlCenterAgentSubmissionList extends React.Component {
             searchedColumns: '',
         }
         this.handleTableCreation = this.handleTableCreation.bind(this)
+        this.createMapContents = this.createMapContents.bind(this)
     }
 
     handleTableCreation = (data) => {
@@ -52,6 +53,7 @@ class ControlCenterAgentSubmissionList extends React.Component {
     handleCancel = e => {
         this.setState({
             visible: false,
+            modal_content: [],
         });
     };
 
@@ -117,8 +119,10 @@ class ControlCenterAgentSubmissionList extends React.Component {
         clearFilters();
         this.setState({searchText: ''});
     };
-
-    createMapContents(locations) {
+    createMapContents = (locations, new_title) => {
+        this.setState({
+            modal_content: [],
+        })
         let list = []
         locations.forEach((value, index) => {
             list.push(
@@ -142,8 +146,10 @@ class ControlCenterAgentSubmissionList extends React.Component {
                 </Map>
             )
         })
-        console.log(list)
-        this.state.modal_content = list
+        this.setState({
+            modal_title: new_title,
+            modal_content: list,
+        })
     }
 
     render() {
@@ -201,12 +207,12 @@ class ControlCenterAgentSubmissionList extends React.Component {
                             onRow={(record, index) => ({
                                 onClick: () => {
                                     let locations = []
-                                    this.state.answers[index].answers.forEach((value, index_) => {
+                                    this.state.answers[record.key - 1].answers.forEach((value, index_) => {
                                         if (value.type === "Location")
                                             locations.push(value)
                                     })
-                                    this.state.modal_title = `locations on row ${index + 1}`
-                                    this.createMapContents(locations)
+                                    let new_title = `locations on row ${record.key}`
+                                    this.createMapContents(locations, new_title)
                                     this.showModal()
                                     // this.nextPath(`/submission/${this.props.match.params.id}/${record.id}`)
                                 }
