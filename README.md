@@ -17,13 +17,18 @@ Technical matters and more details are discussed at the rest of the README.
 ## Running on Your System
 
 You have to install Node.js on your system. You can check if you already have it by typing this command:
-`node --version`
+
+```
+node --version
+```
 
 If you don't have this package, follow the instructions from [Node.js' official website](https://nodejs.org/en/download/).
 
 You'll also need the Yarn package. You can check if you already have it on your system by typing this command:
 
-`yarn --version`
+```
+yarn --version
+```
 
 If you don't have it, follow the instructions from [Yarn's official website](https://classic.yarnpkg.com/en/docs/install/).
 
@@ -58,40 +63,39 @@ Now the program is ready! First, run the back-end by going to the _back_ folder 
 
 ## Back-end
 
-### architecture
+### Architecture
 
-backend code structure is a 4 layer architecture which consists of the following layers :
+The back-end code's structure is a 4-layer architecture which consists of the following layers:
 
--   **app.js**: this file is the main entry point for our app.
+-   **app.js**: This file is the main entry point for the app.
 
--   **api**: this folder consists of endpoints. you will be able to observe all the endpoints we have.
+-   **api**: This folder contains all of the endpoints.
 
--   **controller**: for each api call, the controller handles error checking and client requesting.
+-   **controller**: For each API call, the controller handles the error checking and client requesting.
 
--   **logic**: this folder is actually our app's core logic.
+-   **logic**: This folder is our app's logic core.
 
--   **database**: this layer consists for database main functions.
+-   **database**: This folder contains the database's main functions.
 
-### database
+### Database
 
-we used mongodb atlas which is a fully managed cloud database. for each entity we've created a collection. the collections and their descriptions are as follow :
+We used MongoDB Atlas, which is a fully managed cloud database. There is a collection for each entity:
 
--  **users**: this collection contains all users and their role.
+-   **users**: Contains all users and their roles.
 
--  **forms**: this collection contains all information about forms including their fields, title and id
+-   **forms**: Contains all information about forms, including their ID, title, and fields.
 
-- **answers**: this collection contains all answers submitted by field-agents.
+-   **answers**: Contains all submissions made by Field Agents.
 
-- **polygons**: this collection contains all areas.
+-   **polygons**: Contains all areas, including name and polygon for each area.
 
+### Endpoints
 
-### endpoints
+This code consists of 10 endpoints for the Admin and 4 endpoints for the Control Center Agents and Field Agents.
 
-this code consists of 10 endpoints for admin and 4 endpoints for control-center and field-agent.
+#### Admin Endpoints
 
-#### admin endpoints
-
-we've created CRUD permission for admin for "areas" and "forms". you can see the endpoints in the back/src/api/aadminApi.js.
+Admin has CRUD permission for _areas_ and _forms_. You can see the endpoints in _back/src/api/adminApi.js_.
 
 -   **/admin/forms/**: By sending a GET request to this path, you'll get all of the forms available in the database.
 
@@ -118,13 +122,13 @@ by sending a DELETE request, you can delete the respective polygon from the data
 these are out private endpoints so we used authentication in order to secure the accesses.
 
 -   **/forms/**: this is a GET api that recieves an authorization token and checks the role of the user. for control-center it returns the titles, ids and
-the number of answers for each unique form existing in database. for field-agent the response does not include number of answers.
+    the number of answers for each unique form existing in database. for field-agent the response does not include number of answers.
 
 -   **/forms/:id**: this is a GET api that receives an authorization token and checks the role of the user, for control-center it returns all answers for the respective forms from answers collection of the database. for field-agent it returns the form from the forms database.
 
 for submitting the answers you should send a POST request to this path. it first authorizes the user and if it is a field-agent, the information will be added to the answers database.
 
--  **/role**: by sending a GET request, you receive the role of the user in the authentication token
+-   **/role**: by sending a GET request, you receive the role of the user in the authentication token
 
 these are out private endpoints so we used authentication in order to secure the accesses.
 
