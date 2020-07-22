@@ -1,8 +1,9 @@
 import React from 'react'
 
-import {Table, List} from "antd";
+import {Table, Modal} from "antd";
 import {Layout} from "antd";
 import {withRouter} from 'react-router-dom';
+import {Map, Marker, GoogleApiWrapper} from "google-maps-react";
 import sendGetRequestAndSet from "../functions/sendGetRequestAndSet";
 
 class ControlCenterAgentSubmissionList extends React.Component {
@@ -12,6 +13,9 @@ class ControlCenterAgentSubmissionList extends React.Component {
             answers: [],
             form_info: {},
             title: '',
+            visible: false,
+            modal_title: '',
+            modal_content: [],
         }
         this.handleTableCreation = this.handleTableCreation.bind(this)
     }
@@ -29,8 +33,50 @@ class ControlCenterAgentSubmissionList extends React.Component {
         sendGetRequestAndSet(`forms/${this.props.match.params.id}/`, this.props.token, this.handleTableCreation)
     }
 
-    nextPath(path) {
-        this.props.history.push(path)
+    showModal = () => {
+        this.setState({
+            visible: true,
+        });
+    };
+
+    handleOk = e => {
+        this.setState({
+            visible: false,
+        });
+    };
+
+    handleCancel = e => {
+        this.setState({
+            visible: false,
+        });
+    };
+
+    createMapContents(locations) {
+        let list = []
+        locations.forEach((value, index) => {
+            list.push(
+                <Map
+                    google={this.props.google}
+                    zoom={14}
+                    containerStyle={{width: '300px', height: '300px'}}
+                    initialCenter={{
+                        lat: value.answer[0],
+                        lng: value.answer[1]
+                    }}
+                    key={index}
+                >
+                    <Marker
+                        key={index}
+                        possition={{
+                            lat: value.answer[0],
+                            lng: value.answer[1]
+                        }}
+                    />
+                </Map>
+            )
+        })
+        console.log(list)
+        this.state.modal_content = list
     }
 
     render() {
@@ -91,11 +137,34 @@ class ControlCenterAgentSubmissionList extends React.Component {
                                         if (value.type === "Location")
                                             locations.push(value)
                                     })
-                                    console.log(locations)
+                                    this.state.modal_title = `locations on row ${index + 1}`
+                                    this.createMapContents(locations)
+                                    this.showModal()
                                     // this.nextPath(`/submission/${this.props.match.params.id}/${record.id}`)
                                 }
                             })}
                         />
+                        <Modal
+                            title={this.state.modal_title}
+                            visible={this.state.visible}
+                            onOk={this.handleOk}
+                            onCancel={this.handleCancel}
+                        >
+                            <ul>
+                                {this.state.modal_content.map(item => (
+                                    <li
+                                        key={item}
+                                        style={{
+                                            width: '300px',
+                                            height: '300px',
+                                            marginBottom: '50px'
+                                        }}
+                                    >
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </Modal>
                     </Content>
                 </Layout>
             </>
@@ -103,4 +172,6 @@ class ControlCenterAgentSubmissionList extends React.Component {
     }
 }
 
-export default withRouter(ControlCenterAgentSubmissionList)
+export default GoogleApiWrapper({
+    apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+})(withRouter(ControlCenterAgentSubmissionList))
