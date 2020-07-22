@@ -24,8 +24,8 @@ const TextComponent = ({ description, index }) => {
 				) : (
 					<Input />
 				)}
-				<br />
 			</Form.Item>
+			<br />
 		</>
 	)
 }
