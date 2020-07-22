@@ -38,7 +38,7 @@ class ControlCenterAgentSubmissionList extends React.Component {
 
         const answers = this.state.answers.map((answer, index) => {
             let dict = {}
-            console.log(answer.answers)
+
             answer.answers.forEach((value, index) => {
                 if (value.type !== "Location")
                     dict[value.name] = value.answer;
@@ -57,7 +57,7 @@ class ControlCenterAgentSubmissionList extends React.Component {
             {title: '#', dataIndex: 'key', key: 'key', width: '1%',},
             {title: 'username', dataIndex: 'username', key: 'username',},
         ])
-        console.log(this.state.answers)
+
         if (this.state.answers.length > 0) {
             this.state.answers[0].answers.forEach((value, index) => {
                 let column = {
@@ -86,7 +86,13 @@ class ControlCenterAgentSubmissionList extends React.Component {
                             columns={columns}
                             onRow={(record, index) => ({
                                 onClick: () => {
-                                    this.nextPath(`/submission/${this.props.match.params.id}/${record.id}`)
+                                    let locations = []
+                                    this.state.answers[index].answers.forEach((value, index_) => {
+                                        if (value.type === "Location")
+                                            locations.push(value)
+                                    })
+                                    console.log(locations)
+                                    // this.nextPath(`/submission/${this.props.match.params.id}/${record.id}`)
                                 }
                             })}
                         />
