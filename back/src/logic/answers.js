@@ -9,11 +9,12 @@ exports.insertToAnswers = async function (answers , name , id){
       let jsonObj = {} ;
       jsonObj["username"] = name ;
       jsonObj["formId"] = id ;
-      areas = [];
+
       const promises = answers.map(async (element) => {
           if (element.type == "Location" &&
               element.answer) {
                 const poly = await polygons.isIn(element.answer)
+
                 element["areas"] = poly
                 return poly
           }
@@ -46,7 +47,6 @@ exports.getAnswers = function (id) {
             db.findMany("answers" , jsonStr )
                 .then ((val) => {
                     returnVal["answers"] = val
-
                     res(returnVal);
 
                 })

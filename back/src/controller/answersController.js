@@ -10,6 +10,7 @@ exports.add = (req, res) => {
     let {id} = req.params;
     username = req.user['https://example.com/email']
 
+
     users.getUserRole(username).then ((role) => {
         if(role == "field_agent"){
             try {
