@@ -27,8 +27,6 @@ exports.add = (req, res) => {
 exports.getAll = (req, res) => {
 
     username = req.user['https://example.com/email']
-
-
 	forms
 		.getAllForms(username)
 		.then((result) => {
