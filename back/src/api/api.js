@@ -29,23 +29,10 @@ const checkJwt = jwt({
 })
 
 router.get('/forms', checkJwt, formController.getAll)
-///////////////////////////////////////////////unit test
-describe('GET /films-list', () => {
-	it('should return a list of films when called', (done) => {
-		chai.request(app)
-			.get('/films-list')
-			.end((err, res) => {
-				res.should.have.status(200)
-				expect(res.body).to.deep.equal(starwarsFilmListMock)
-				done()
-			})
-	})
-})
-//////////////////////////////////////////////unit test
 
 router.get('/role', checkJwt, userController.getRole)
 
-router.post('/forms/:id(\\d+)', checkjwt, express.json(), answerController.add)
+router.post('/forms/:id(\\d+)', checkJwt, express.json(), answerController.add)
 
 router.get('/forms/:id(\\d+)', checkJwt, (req, res) => {
 	username = req.user['https://example.com/email']
