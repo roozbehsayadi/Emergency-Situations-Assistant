@@ -21,13 +21,17 @@ exports.getAllForms  = function  (username){
         db.findAll("forms")
         .then ((val) => {
             users.getUserRole(username).then((role) => {
+
                 if (role == "field_agent"){
+                    forms = []
                     for (const element of val) {
                         let jsonObj = {}
                         jsonObj["title"] = element.title;
                         jsonObj["id"] = element.id;
                         forms.push(jsonObj)
+
                     }
+
                     res(forms)
                 }
                 else {
