@@ -9,7 +9,6 @@ exports.insertToAnswers = async function (answers , name , id){
       let jsonObj = {} ;
       jsonObj["username"] = name ;
       jsonObj["formId"] = id ;
-      jsonObj["areas"] = [];
       areas = [];
       const promises = answers.map(async (element) => {
           if (element.type == "Location" &&
@@ -42,9 +41,12 @@ exports.getAnswers = function (id) {
             var returnVal = {}
             returnVal["title"] = form.title ;
             let jsonStr = " {\"formId\" : \"" + id + "\" }" ;
-            db.findMany("answers" , jsonStr)
+            let fields = " {\"answers\" : \"" + 1 + "\" }" ;
+            console.log(form.title)
+            db.findMany("answers" , jsonStr )
                 .then ((val) => {
                     returnVal["answers"] = val
+
                     res(returnVal);
 
                 })
