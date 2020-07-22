@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const transferData = require('../logic/transferData.js');
+// const transferData = require('../logic/transferData.js');
+const users = require('../logic/users')
 const { json } = require('express');
 var logger = require ('../logger')
 
@@ -8,7 +9,7 @@ var logger = require ('../logger')
 exports.getRole = (req, res) => {
 
     name = req.user['https://example.com/email']
-	transferData
+	users
 		.getUserRole(name)
 		.then((role) => {
 			logger.log(`get request for /user/${name}/role`)

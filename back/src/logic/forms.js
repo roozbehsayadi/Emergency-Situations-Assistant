@@ -1,7 +1,8 @@
 const db = require('../database/db.js')
 var Promise = require('promise');
 const { json } = require('express');
-
+const users = require('./users')
+const answers = require('./answers')
 
 exports.insertToForms  = function (jsonObj){
     return new Promise((res , rej) => {
@@ -14,10 +15,45 @@ exports.insertToForms  = function (jsonObj){
     })
 }
 
-exports.getAllForms  = function  (){
+exports.getAllForms  = function  (username){
+
     return new Promise((res , rej) => {
-        db.findAll("forms").then ((val) => {
-            res(val)
+        db.findAll("forms")
+        .then ((val) => {
+            users.getUserRole(username).then((role) => {
+
+                if (role == "field_agent"){
+                    forms = []
+                    for (const element of val) {
+                        let jsonObj = {}
+                        jsonObj["title"] = element.title;
+                        jsonObj["id"] = element.id;
+                        forms.push(jsonObj)
+
+                    }
+
+                    res(forms)
+                }
+                else {
+                    forms = []
+                    var iterator = 0 ;
+                    for (const element of val) {
+                        let jsonObj = {}
+                        jsonObj["title"] = element.title;
+                        jsonObj["id"] = element.id;
+                        answers.getAnswers(element.id). then ((ans) => {
+                            jsonObj["number_of_answers"] = ans.length ;
+                            iterator = iterator + 1 ;
+                            forms.push(jsonObj)
+                            if (iterator == val.length){
+                                res(forms)
+                            }
+                        })
+                    }
+                }
+
+            })
+
         }).catch((err) => {
             rej(err)
         })

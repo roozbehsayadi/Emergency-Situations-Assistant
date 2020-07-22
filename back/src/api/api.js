@@ -5,18 +5,17 @@ const users = require('../logic/users.js')
 const userController = require('../controller/usersController')
 const formController = require('../controller/formsController.js')
 const answerController = require('../controller/answersController')
+
 const { json } = require('express')
 
 var logger = require('../logger')
 require('dotenv').config()
-////////////////////////////////////////////////////////auth
 const jwt = require('express-jwt')
 const jwtAuthz = require('express-jwt-authz')
 const jwksRsa = require('jwks-rsa')
+const { SigningKeyNotFoundError } = require('jwks-rsa')
+
 const checkJwt = jwt({
-	// Dynamically provide a signing key
-	// based on the kid in the header and
-	// the signing keys provided by the JWKS endpoint.
 	secret: jwksRsa.expressJwtSecret({
 		cache: true,
 		rateLimit: true,
@@ -24,18 +23,20 @@ const checkJwt = jwt({
 		jwksUri: `https://${process.env.domain}/.well-known/jwks.json`,
 	}),
 
-	// Validate the audience and the issuer.
 	audience: process.env.api_identifier,
 	issuer: `https://${process.env.domain}/`,
 	algorithms: ['RS256'],
 })
 
-///////////////////////////////////////////////////////auth
-
 router.get('/forms', checkJwt, formController.getAll)
 
+router.get('/role', checkJwt, userController.getRole)
+
+router.post('/forms/:id(\\d+)', checkJwt, express.json(), answerController.add)
+
 router.get('/forms/:id(\\d+)', checkJwt, (req, res) => {
-	username = req.user['https://example.com/email']
+    username = req.user['https://example.com/email']
+    // username = "controlcenteragent@gmail.com"
 
 	users.getUserRole(username).then((role) => {
 		if (role == 'control_center') {
@@ -53,7 +54,6 @@ router.get('/forms/:id(\\d+)', checkJwt, (req, res) => {
 	})
 })
 
-router.get('/role', checkJwt, userController.getRole)
 
 //recieves answers and for each Location field it finds all of the areas
 //that location is inside and store that name of the polygons in the ares field in database

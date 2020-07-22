@@ -76,7 +76,7 @@ const FormToSubmit = ({ token, username }) => {
 				}
 			}
 			if (values[key]._isAMomentObject === true)
-				temp.asnwer = values[key]._d
+				temp.answer = values[key]._d
 			else if (values[key].hasOwnProperty('lat'))
 				temp.answer = [values[key].lat, values[key].lng]
 			else if (canParse(values[key])) {
