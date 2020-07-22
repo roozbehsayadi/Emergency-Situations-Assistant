@@ -3,12 +3,13 @@ import React from 'react'
 import {Table, List} from "antd";
 import {Layout} from "antd";
 import {withRouter} from 'react-router-dom';
+import sendGetRequestAndSet from "../functions/sendGetRequestAndSet";
 
 class ControlCenterAgentSubmissionList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            users: [],
+            answers: [],
             form_info: {},
             title: '',
         }
@@ -18,8 +19,15 @@ class ControlCenterAgentSubmissionList extends React.Component {
 
     handleTableCreation = (data) => {
         this.setState({
-            users: data,
+            answers: data,
         })
+        if (this.state.answers.length > 0) {
+            let answer = this.state.answers[0]
+            this.handleFormInfo({
+                title: answer.title,
+                id: answer.formId,
+            })
+        }
     }
 
     handleFormInfo = (data) => {
@@ -32,19 +40,7 @@ class ControlCenterAgentSubmissionList extends React.Component {
     }
 
     componentDidMount() {
-        // TODO: request here.
-        this.handleFormInfo({
-            title: 'test form 1',
-            id: 1,
-            fields: [
-                'test 1',
-            ],
-        })
-        this.handleTableCreation([
-            {user_id: 'test user 1'},
-            {user_id: 'test user 2'},
-            {user_id: 'test user 3'},
-        ])
+        sendGetRequestAndSet(`forms/${this.props.match.params.id}/`, this.props.token, this.handleTableCreation)
     }
 
     nextPath(path) {
@@ -53,17 +49,36 @@ class ControlCenterAgentSubmissionList extends React.Component {
 
     render() {
         const {Content} = Layout
-        const users = this.state.users.map((user, index) => {
+
+        const answers = this.state.answers.map((answer, index) => {
+            let dict = {}
+            console.log(answer.answers)
+            answer.answers.forEach((value, index) => {
+                dict[value.name] = value.answer;
+            })
             return {
                 key: index + 1,
-                user_id: user.user_id,
+                username: answer.username,
+                ...dict
             }
         })
 
-        const columns = [
+        let columns = []
+        columns.push(...[
             {title: '#', dataIndex: 'key', key: 'key', width: '1%',},
-            {title: 'user id', dataIndex: 'user_id', key: 'user_id',},
-        ]
+            {title: 'username', dataIndex: 'username', key: 'username',},
+        ])
+        console.log(this.state.answers)
+        if (this.state.answers.length > 0) {
+            this.state.answers[0].answers.forEach((value, index) => {
+                let column = {
+                    title: value.title,
+                    dataIndex: value.name,
+                    key: value.name,
+                }
+                columns.push(column)
+            })
+        }
 
         return (
             <>
@@ -82,7 +97,7 @@ class ControlCenterAgentSubmissionList extends React.Component {
                             {this.state.form_info.id}
                         </h1>
                         <Table
-                            dataSource={users}
+                            dataSource={answers}
                             columns={columns}
                             onRow={(record, index) => ({
                                 onClick: () => {
