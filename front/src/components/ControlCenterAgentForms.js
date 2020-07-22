@@ -3,6 +3,7 @@ import React from 'react'
 import {Table} from "antd";
 import {Layout} from "antd";
 import {withRouter} from 'react-router-dom';
+import sendGetRequestAndSet from "../functions/sendGetRequestAndSet";
 
 class ControlCenterAgentForms extends React.Component {
     constructor(props) {
@@ -22,12 +23,7 @@ class ControlCenterAgentForms extends React.Component {
     }
 
     componentDidMount() {
-        // TODO: request here.
-        this.handleTableCreation([
-            {id: 1, 'title': 'test from 1', 'submit_count': 5},
-            {id: 2, 'title': 'test from 2', 'submit_count': 6},
-            {id: 3, 'title': 'test from 3', 'submit_count': 7},
-        ])
+        sendGetRequestAndSet('forms', this.props.token, this.handleTableCreation)
     }
 
     nextPath(path) {
