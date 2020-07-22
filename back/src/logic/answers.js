@@ -42,7 +42,6 @@ exports.getAnswers = function (id) {
             var returnVal = {}
             returnVal["title"] = form.title ;
             let jsonStr = " {\"formId\" : \"" + id + "\" }" ;
-            let fields = " {\"answers\" : \"" + 1 + "\" }" ;
             console.log(form.title)
             db.findMany("answers" , jsonStr )
                 .then ((val) => {
@@ -58,3 +57,21 @@ exports.getAnswers = function (id) {
     });
 }
 
+exports.getAnswersLen = function (id) {
+    return new Promise ((res , rej) => {
+
+            let jsonStr = " {\"formId\" : \"" + id + "\" }" ;
+
+            db.findMany("answers" , jsonStr )
+                .then ((val) => {
+
+                    res(val);
+
+                })
+                .catch((err) => {
+                    rej(err)
+                })
+
+
+    });
+}

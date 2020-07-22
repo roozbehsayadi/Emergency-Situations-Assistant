@@ -23,6 +23,7 @@ exports.getAllForms  = function  (username){
             users.getUserRole(username).then((role) => {
 
                 if (role == "field_agent"){
+
                     forms = []
                     for (const element of val) {
                         let jsonObj = {}
@@ -41,7 +42,7 @@ exports.getAllForms  = function  (username){
                         let jsonObj = {}
                         jsonObj["title"] = element.title;
                         jsonObj["id"] = element.id;
-                        answers.getAnswers(element.id). then ((ans) => {
+                        answers.getAnswersLen(element.id). then ((ans) => {
                             jsonObj["number_of_answers"] = ans.length ;
                             iterator = iterator + 1 ;
                             forms.push(jsonObj)
