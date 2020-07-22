@@ -18,6 +18,7 @@
     "jwks-rsa": "^1.8.1",
     "mongodb": "^3.5.9",
     "nodemon": "^2.0.4",
+    "point-in-polygon": "^1.0.1",
     "promise": "^8.1.0",
     "winston": "^3.3.3"
   }

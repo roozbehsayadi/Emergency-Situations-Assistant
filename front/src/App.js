@@ -8,10 +8,11 @@ import {
 
 import { useAuth0 } from '@auth0/auth0-react'
 
-import getAndSetUserRole from './functions/getAndSetUserRole'
+import sendGetRequestAndSet from './functions/sendGetRequestAndSet'
 
 import ControlCenterAgentForms from './components/ControlCenterAgentForms'
 import FieldAgentForms from './components/FieldAgentForms'
+import FormToSubmit from './components/FormToSubmit/FormToSubmit'
 
 import { LoadingOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
@@ -36,12 +37,36 @@ const App = () => {
 		getAccessTokenSilently,
 	} = useAuth0()
 
-	var email = 'None'
-	const [userRole, setUserRole] = useState('None')
+	const [nickname, setNickname] = useState(null)
+	const [picture, setPicture] = useState(null)
+	const [email, setEmail] = useState(null)
 	useEffect(() => {
-		if (isAuthenticated)
-			getAndSetUserRole(email, getAccessTokenSilently, setUserRole)
-	}, [isAuthenticated, email, getAccessTokenSilently])
+		if (user) {
+			setNickname(user.nickname)
+			setPicture(user.picture)
+			setEmail(user.email)
+		}
+	}, [user])
+
+	const [userRole, setUserRole] = useState('None')
+	const [accessToken, setAccessToken] = useState('None')
+
+	useEffect(() => {
+		if (isAuthenticated && accessToken !== 'None')
+			sendGetRequestAndSet(`role`, accessToken, setUserRole)
+		// getAndSetUserRole(email, accessToken, setUserRole)
+	}, [isAuthenticated, email, accessToken])
+
+	useEffect(() => {
+		const temp = async () => {
+			setAccessToken(
+				await getAccessTokenSilently({
+					audience: process.env.REACT_APP_AUTH0_API_IDENTIFIER,
+				})
+			)
+		}
+		temp()
+	}, [getAccessTokenSilently, accessToken])
 
 	if (isLoading)
 		return (
@@ -50,8 +75,8 @@ const App = () => {
 			</div>
 		)
 
-	const { nickname, picture } = user
-	email = user.email
+	// const { nickname, picture } = user
+	// email = user.email
 
 	return (
 		<Layout className="layout">
@@ -59,7 +84,12 @@ const App = () => {
 				{isAuthenticated && (
 					<img src={picture} alt="avatar" className="navbar-avatar" />
 				)}
-				<Menu onClick={handleNavClick} theme="dark" mode="horizontal">
+				<Menu
+					onClick={handleNavClick}
+					selectedKeys={['home']}
+					theme="dark"
+					mode="horizontal"
+				>
 					{isAuthenticated && (
 						<SubMenu title={nickname}>
 							<Menu.Item key="logout">Log out</Menu.Item>
@@ -89,10 +119,22 @@ const App = () => {
 								path="/forms"
 								children={
 									userRole === 'field_agent' ? (
-										<FieldAgentForms />
+										<FieldAgentForms token={accessToken} />
 									) : (
-										<ControlCenterAgentForms />
+										<ControlCenterAgentForms
+											token={accessToken}
+											username={email}
+										/>
 									)
+								}
+							/>
+							<Route
+								path="/submit_form/:id"
+								children={
+									<FormToSubmit
+										token={accessToken}
+										username={email}
+									/>
 								}
 							/>
 						</Switch>
