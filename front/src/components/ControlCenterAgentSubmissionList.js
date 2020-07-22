@@ -2,7 +2,7 @@ import React from 'react'
 
 import {Table, Modal, Input, Button, Space} from "antd";
 import Highlighter from 'react-highlight-words';
-import { SearchOutlined } from '@ant-design/icons';
+import {SearchOutlined} from '@ant-design/icons';
 import {Layout} from "antd";
 import {withRouter} from 'react-router-dom';
 import {Map, Marker, GoogleApiWrapper} from "google-maps-react";
@@ -177,6 +177,7 @@ class ControlCenterAgentSubmissionList extends React.Component {
             {title: 'username', dataIndex: 'username', key: 'username', ...this.getColumnSearchProps('username')},
         ])
 
+        let numeric_columns = []
         if (this.state.answers.length > 0) {
             this.state.answers[0].answers.forEach((value, index) => {
                 let column = {
@@ -186,6 +187,10 @@ class ControlCenterAgentSubmissionList extends React.Component {
                     ...this.getColumnSearchProps(value.name),
                 }
                 columns.push(column)
+                if (column.type === 'Number')
+                    numeric_columns.push(true)
+                else
+                    numeric_columns.push(false)
             })
         }
 
@@ -217,6 +222,28 @@ class ControlCenterAgentSubmissionList extends React.Component {
                                     // this.nextPath(`/submission/${this.props.match.params.id}/${record.id}`)
                                 }
                             })}
+                            summary={pageData => {
+                                let counts = Array(numeric_columns.length).fill(0)
+                                pageData.forEach((value, index) => {
+                                    Object.keys(value).forEach((field, field_index) => {
+                                        if (numeric_columns[field_index])
+                                            counts[field_index] += field
+                                    })
+                                })
+                                return (
+                                    <>
+                                        <Table.Summary.Row>
+                                            <Table.Summary.Cell>Summery</Table.Summary.Cell>
+                                            <Table.Summary.Cell>-</Table.Summary.Cell>
+                                            {numeric_columns.map((value, index) => (
+                                                <Table.Summary.Cell>
+                                                    {value ? counts[index] : '-'}
+                                                </Table.Summary.Cell>
+                                            ))}
+                                        </Table.Summary.Row>
+                                    </>
+                                )
+                            }}
                         />
                         <Modal
                             title={this.state.modal_title}
