@@ -31,7 +31,7 @@ Once you setup these packages, clone this project from the repository. On the pr
 
 This project uses [Auth0](https://auth0.com/) for authentication and [MongoDB](https://www.mongodb.com/) as the database, so make sure to go to these websites and set things up. You'll also need a Google API key. Check out [Google Maps Platform](https://developers.google.com/maps/documentation/javascript/get-api-key) for more details on how to get an API key.
 
-As the last step, you need to create some environment variables.
+As the last step, you have to create some environment variables:
 
 -   Go to the back-end folder, and create a file named _.env_. This file should have these fields:
 
