@@ -45,7 +45,7 @@ exports.replacePoly = function (id , newPoly) {
     return new Promise ((res , rej) => {
         let cond = " {\"id\" : \"" + id + "\" }" ;
         db.replace("polygons" , cond , newPoly).then ((result) => {
-            res(result)
+            res(result.modifiedCount)
         }).catch((err) => {
             rej(err)
         })
@@ -64,6 +64,7 @@ exports.deletePoly = function (id) {
         })
     })
 }
+
 exports.isIn =function (coordinates){
     return new Promise ((res , rej) => {
         db.findAll("polygons").then((polygons) => {

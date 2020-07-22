@@ -64,6 +64,7 @@ exports.replace = function (collection , condition , replaceObj){
         condition = JSON.parse(condition)
         db.collection(collection).replaceOne(condition , replaceObj , ((err , result) => {
             if (err) rej(err)
+
             res(result)
         }))
     })
