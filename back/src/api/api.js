@@ -53,7 +53,6 @@ router.get('/forms/:id(\\d+)', checkJwt, (req, res) => {
 	})
 })
 
-router.get('/role', checkJwt, userController.getRole)
 
 //recieves answers and for each Location field it finds all of the areas
 //that location is inside and store that name of the polygons in the ares field in database
