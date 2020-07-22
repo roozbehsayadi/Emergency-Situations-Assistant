@@ -43,6 +43,23 @@ exports.getAll = (req, res) => {
 		})
 }
 
+exports.getAllAdmin = (req, res) => {
+	forms
+		.getAllFormsAdmin()
+		.then((result) => {
+			logger.log(`get request for ${req.originalUrl}`)
+			res.status(200).send(result)
+		})
+		.catch((err) => {
+			logger.log(
+				`get request for ${req.originalUrl} faced the following error :  ${err}`
+			)
+			res.status(404).send({
+				message: 'forms not found',
+			})
+		})
+}
+
 exports.getOne = (req, res) => {
 	let id = req.params.id
 	forms
