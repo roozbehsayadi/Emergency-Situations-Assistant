@@ -1,16 +1,18 @@
 import React from 'react'
 
-import {Table} from "antd";
+import {Table, List} from "antd";
 import {Layout} from "antd";
+import {withRouter} from 'react-router-dom';
 
 class ControlCenterAgentSubmissionList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: `submissions of form ${this.props.form_info.title}`,
             users: [],
             form_info: {},
+            title: '',
         }
+        console.log(this.props.id)
         this.handleTableCreation = this.handleTableCreation.bind(this)
     }
 
@@ -24,20 +26,25 @@ class ControlCenterAgentSubmissionList extends React.Component {
         this.setState({
             form_info: data,
         })
+        this.setState({
+            title: `submissions of form ${data.title}`
+        })
     }
 
     componentDidMount() {
         // TODO: request here.
+        this.handleFormInfo({
+            title: 'test form 1',
+            id: 1,
+            fields: [
+                'test 1',
+            ],
+        })
         this.handleTableCreation([
             {user_id: 'test user 1'},
             {user_id: 'test user 2'},
             {user_id: 'test user 3'},
         ])
-        this.handleFormInfo({
-            title: 'test form 1',
-            id: 1,
-            field_count: 5,
-        })
     }
 
     nextPath(path) {
@@ -54,18 +61,10 @@ class ControlCenterAgentSubmissionList extends React.Component {
         })
 
         const columns = [
-            {
-                title: '#',
-                dataIndex: 'key',
-                key: 'key',
-                width: '1%',
-            },
-            {
-                title: 'user id',
-                dataIndex: 'user_id',
-                key: 'user_id',
-            },
+            {title: '#', dataIndex: 'key', key: 'key', width: '1%',},
+            {title: 'user id', dataIndex: 'user_id', key: 'user_id',},
         ]
+
         return (
             <>
                 <Layout>
@@ -78,9 +77,10 @@ class ControlCenterAgentSubmissionList extends React.Component {
                         }}
                     >
                         <h1>Oh you're a control center agent. Here are submissions for
-                            form {this.props.form_info.title}.</h1>
-                        <h2>form id: {this.props.form_info.id}</h2>
-                        <h2>form's field count: {this.props.form_info.field_count}</h2>
+                            form {this.state.form_info.title}</h1>
+                        <h1>form id:
+                            {this.state.form_info.id}
+                        </h1>
                         <Table
                             dataSource={users}
                             columns={columns}
@@ -99,4 +99,4 @@ class ControlCenterAgentSubmissionList extends React.Component {
     }
 }
 
-export default ControlCenterAgentSubmissionList
+export default withRouter(ControlCenterAgentSubmissionList)
