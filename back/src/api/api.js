@@ -29,13 +29,24 @@ const checkJwt = jwt({
 })
 
 router.get('/forms', checkJwt, formController.getAll)
-// router.get('/forms',  formController.getAll)
+///////////////////////////////////////////////unit test
+describe('GET /films-list', () => {
+    it('should return a list of films when called', done => {
+      chai
+        .request(app)
+        .get('/films-list')
+        .end((err, res) => {
+          res.should.have.status(200);
+          expect(res.body).to.deep.equal(starwarsFilmListMock);
+          done();
+        });
+    });
+  });
+//////////////////////////////////////////////unit test
 
 router.get('/role', checkJwt, userController.getRole)
 
-router.post('/forms/:id(\\d+)', express.json(), answerController.add)
-//recieves answers and for each Location field it finds all of the areas
-//that location is inside and store that name of the polygons in the ares field in database
+router.post('/forms/:id(\\d+)', checkjwt ,express.json(), answerController.add)
 
 router.get('/forms/:id(\\d+)' ,checkJwt, (req, res) => {
 

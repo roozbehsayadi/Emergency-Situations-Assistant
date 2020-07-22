@@ -580,3 +580,7 @@
 {"message":"db started at 2020:07:21:19:43:48","level":"info"}
 {"message":"get request for /forms","level":"info"}
 {"message":"Request for closing server at 2020:07:21:19:44:07","level":"info"}
+{"message":"Server started at 2020:07:21:19:44:14","level":"info"}
+{"message":"db started at 2020:07:21:19:44:18","level":"info"}
+{"message":"get request for /forms","level":"info"}
+{"message":"Request for closing server at 2020:07:21:19:47:28","level":"info"}
