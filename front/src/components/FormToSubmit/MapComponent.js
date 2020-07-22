@@ -30,27 +30,27 @@ const MapComponent = ({
 	}
 
 	return (
-		<Form.Item
-			name={description.name}
-			label={description.title}
-			key={index}
-			style={{
-				display: 'inline-block',
-				width: description.hasOwnProperty('options')
-					? '100px'
-					: '300px',
-				height: description.hasOwnProperty('options')
-					? '100px'
-					: '400px',
-				marginBottom: description.hasOwnProperty('options')
-					? '0%'
-					: '65px',
-			}}
-		>
-			{description.hasOwnProperty('options') ? (
-				SelectComponent(description)
-			) : (
-				<>
+		<>
+			<Form.Item
+				name={description.name}
+				label={description.title}
+				key={index}
+				style={{
+					display: 'inline-block',
+					width: description.hasOwnProperty('options')
+						? '100px'
+						: '300px',
+					height: description.hasOwnProperty('options')
+						? '100px'
+						: '400px',
+					marginBottom: description.hasOwnProperty('options')
+						? '0%'
+						: '65px',
+				}}
+			>
+				{description.hasOwnProperty('options') ? (
+					SelectComponent(description)
+				) : (
 					<Map
 						google={google}
 						zoom={14}
@@ -64,9 +64,10 @@ const MapComponent = ({
 					>
 						<Marker key={index} position={markerPos.position} />
 					</Map>
-				</>
-			)}
-		</Form.Item>
+				)}
+			</Form.Item>
+			<br />
+		</>
 	)
 }
 

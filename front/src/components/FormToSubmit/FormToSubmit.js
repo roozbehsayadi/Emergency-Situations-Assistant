@@ -5,6 +5,7 @@ import { Typography, Form, Space, Button, Divider } from 'antd'
 import { HomeOutlined } from '@ant-design/icons'
 
 import sendGetRequestAndSet from '../../functions/sendGetRequestAndSet'
+import sendPostRequest from '../../functions/sendPostRequest'
 
 import TextComponent from './TextComponent'
 import NumberComponent from './NumberComponent'
@@ -13,11 +14,18 @@ import MapComponent from './MapComponent'
 
 const { Title } = Typography
 
-const handleSubmit = (values) => {
-	console.log(values)
+var isJson = require('is-valid-json')
+
+const canParse = (s) => {
+	try {
+		JSON.parse(s)
+	} catch (e) {
+		return false
+	}
+	return true
 }
 
-const FormToSubmit = ({ token }) => {
+const FormToSubmit = ({ token, username }) => {
 	const { id } = useParams()
 	let history = useHistory()
 
@@ -54,6 +62,50 @@ const FormToSubmit = ({ token }) => {
 
 	const redirectToForms = () => {
 		history.push('/forms')
+	}
+
+	const turnSubmissionIntoArray = (values) => {
+		let returnValue = []
+		Object.keys(values).forEach((key, index) => {
+			let temp = {}
+			temp.name = key
+			for (let i = 0; i < formFields.length; i++) {
+				if (formFields[i].name === key) {
+					temp.title = formFields[i].title
+					temp.type = formFields[i].type
+				}
+			}
+			if (values[key]._isAMomentObject === true)
+				temp.asnwer = values[key]._d
+			else if (values[key].hasOwnProperty('lat'))
+				temp.answer = [values[key].lat, values[key].lng]
+			else if (canParse(values[key])) {
+				const answerTemp = JSON.parse(values[key])
+				if (answerTemp.lat) {
+					if (
+						typeof answerTemp.lat === 'string' ||
+						answerTemp instanceof String
+					)
+						temp.answer = [
+							parseFloat(answerTemp.lat),
+							parseFloat(answerTemp.long),
+						]
+					else temp.answer = [answerTemp.lat, answerTemp.long]
+				} else temp.answer = answerTemp
+			} else temp.answer = values[key]
+			returnValue.push(temp)
+		})
+		return returnValue
+	}
+
+	const handleSubmit = (values) => {
+		for (let key in markers) {
+			const fieldName = key.replace(`form_${id}_`, '')
+			values[fieldName] = markers[key].position
+		}
+		console.log(values)
+		values = turnSubmissionIntoArray(values)
+		sendPostRequest(`user/${username}/forms/${formId}/post_form`, token)
 	}
 
 	return (

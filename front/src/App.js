@@ -130,7 +130,12 @@ const App = () => {
 							/>
 							<Route
 								path="/submit_form/:id"
-								children={<FormToSubmit token={accessToken} />}
+								children={
+									<FormToSubmit
+										token={accessToken}
+										username={email}
+									/>
+								}
 							/>
 						</Switch>
 					</Router>
