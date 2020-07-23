@@ -61,6 +61,12 @@ REACT_APP_GOOGLE_API_KEY= /* Google API Key */
 
 Now the program is ready! First, run the back-end by going to the _back_ folder and type `npm start`. Then go to the _front_ folder and type `yarn start` to start the front-end. At this point, a tab should pop up in your browser and You should be able to see the program's home page.
 
+## Libraries Used
+
+The front-end is implemented with React and Ant Design.
+
+The back-end is implemented with express.js.
+
 ## Back-end
 
 ### Architecture
@@ -141,4 +147,40 @@ These are the private endpoints. All requests sent to these endpoints must have 
 
 ## Front-end
 
-I think the front-end is pretty self-explanatory, As all front-ends should be.
+Here's a brief description about the code files in the front-end.
+
+-   **public/**
+
+    -   _index.html_: The HTML file for the front-end. If you're not familiar with React, notice that there's a `<div id="root"></div>` the the file, which is where the React app takes place when started.
+
+    *   _style.css_: Styles used in the front-end.
+
+*   **src/**
+
+    -   _App.js_: Sets up authentication system. Also handles routing for page content and create the navbar at the top of the page.
+
+    -   _index.js_: Renders the React app.
+
+    -   _auth0-provider-with-history.js_: Sets up the Auth0 service.
+
+    -   **components/**
+
+        -   _FormToSubmit/_: Contains all the components used in form submission page. The main component is _FormToSubmit.js_ which uses the other components in the folder.
+
+        *   _ControlCenterAgentForms.js_: Shows the list of forms for the Control Center Agents.
+
+        *   _ControlCenterAgentSubmissionList.js_: Shows the list of answers for a specific form.
+
+        *   _FieldAgentForms.js_: Shows the list of forms for the Field Agents.
+
+    *   **functions/**
+
+        -   _sendGetRequestAndSet.js_: Gets three parameters: _api_, _accessToken_, and _setterFunction_. Sends a GET request to the specified api and passes the answer to setterFunction.
+
+        *   _sendPostRequest.js_: Gets three parameters: _api_, _accessToken_, and _data_. Sends a POST request to the specified api, and passes the data as the request data.
+
+## Git Branching
+
+GitFlow workflow is used in this repository. There's a _develop_ branch which the features will be added there. When the _develop_ branch is ready, a new branch should be created for release. It's name is something like _release/x.y.z_ which x, y and z demonstrate the version we're releasing. After doing the release works, the _release_ branch gets merged into _master_ and _master_ is tagged with the corresponding version.
+
+For adding features to _develop_, a new branch is taken from _develop_ and each feature will be developed inside its corresponding branch. After a feature is completed, the feature's branch will be merged back into _develop_. Some branches that were made in the development process are _Authorization_, _backend_, _fieldagent_ and...
