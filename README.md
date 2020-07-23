@@ -99,31 +99,31 @@ Admin has CRUD permission for _areas_ and _forms_. You can see the endpoints in 
 
 -   **/admin/forms/**
 
-    ..\* **GET**: Returns all available forms in the database.
+    -   **GET**: Returns all available forms in the database.
 
-    ..\* **POST**: Add a new form to the database.
+    -   **POST**: Add a new form to the database.
 
 -   **/admin/forms/:id**
 
-    ..\* **GET**: Returns the respective form's description from the database.
+    -   **GET**: Returns the respective form's description from the database.
 
-    ..\* **PUT**: Replaces the respective form's details with the sent information in the database.
+    -   **PUT**: Replaces the respective form's details with the sent information in the database.
 
-    ..\* **DELETE**: Deletes the respective form from the database.
+    -   **DELETE**: Deletes the respective form from the database.
 
 -   **/admin/polygons/**
 
-    ..\* **GET**: Returns all available polygons in the database.
+    -   **GET**: Returns all available polygons in the database.
 
-    ..\* **POST**: Adds a new polygon to the database.
+    -   **POST**: Adds a new polygon to the database.
 
 -   **/admin/polygons/:id**
 
-    ..\* **GET**: Returns the respectuve polygon's description from the database.
+    -   **GET**: Returns the respectuve polygon's description from the database.
 
-    ..\* **PUT**: Replaces the respective polygon's details with the sent information in the database.
+    -   **PUT**: Replaces the respective polygon's details with the sent information in the database.
 
-    ..\* **DELETE**: Deletes the respective polygon from the database.
+    -   **DELETE**: Deletes the respective polygon from the database.
 
 #### Other Endpoints
 
@@ -133,9 +133,9 @@ These are the private endpoints. All requests sent to these endpoints must have 
 
 -   **/forms/:id**:
 
-    ..\* **GET**: Checks the role of the user from the access token available in the header. For the Control Center Agents it returns all answers to the respective form from answers collection of the database. for the Field Agents it returns the form from the forms database.
+    -   **GET**: Checks the role of the user from the access token available in the header. For the Control Center Agents it returns all answers to the respective form from answers collection of the database. for the Field Agents it returns the form from the forms database.
 
-    ..* **POST**: Checks the role of the user from the access token available in the header, then adds the information to the *answers\* collection if the user is a Field Agent.
+    -   **POST**: Checks the role of the user from the access token available in the header, then adds the information to the \*answers\* collection if the user is a Field Agent.
 
 -   **/role**: This is a GET API. Reads the user information from the access token, and returns the role of the user.
 
