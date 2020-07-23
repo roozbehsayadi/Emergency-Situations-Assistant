@@ -3,7 +3,7 @@ const axios = require('axios').default
 const sendPostRequest = (api, accessToken, data) => {
 	axios({
 		method: 'post',
-		url: `http://localhost:9000/${api}`,
+		url: `/${api}`,
 		headers: {
 			Authorization: `Bearer ${accessToken}`,
 		},

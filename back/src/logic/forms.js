@@ -21,7 +21,6 @@ exports.getAllForms  = function (username){
         db.findAll("forms")
         .then ((val) => {
             users.getUserRole(username).then((role) => {
-
                 if (role == "field_agent"){
                     forms = []
                     for (const element of val) {
@@ -41,11 +40,13 @@ exports.getAllForms  = function (username){
                         let jsonObj = {}
                         jsonObj["title"] = element.title;
                         jsonObj["id"] = element.id;
-                        answers.getAnswers(element.id). then ((ans) => {
+                        answers.getAnswersLen(element.id). then ((ans) => {
+
                             jsonObj["number_of_answers"] = ans.length ;
                             iterator = iterator + 1 ;
                             forms.push(jsonObj)
                             if (iterator == val.length){
+
                                 res(forms)
                             }
                         })
@@ -62,7 +63,6 @@ exports.getAllForms  = function (username){
 
 exports.getAllFormsAdmin = function (){
     return new Promise((res , rej) => {
-
         db.findAll("forms")
         .then ((val) => {
             res(val)

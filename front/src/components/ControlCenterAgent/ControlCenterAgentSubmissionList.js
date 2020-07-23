@@ -2,11 +2,12 @@ import React from 'react'
 
 import {Table, Modal, Input, Button, Space} from "antd";
 import Highlighter from 'react-highlight-words';
-import { SearchOutlined } from '@ant-design/icons';
+import {SearchOutlined} from '@ant-design/icons';
 import {Layout} from "antd";
 import {withRouter} from 'react-router-dom';
 import {Map, Marker, GoogleApiWrapper} from "google-maps-react";
-import sendGetRequestAndSet from "../functions/sendGetRequestAndSet";
+import sendGetRequestAndSet from "../../functions/sendGetRequestAndSet";
+import CSVExport from "./CSVExport";
 
 class ControlCenterAgentSubmissionList extends React.Component {
     constructor(props) {
@@ -119,6 +120,7 @@ class ControlCenterAgentSubmissionList extends React.Component {
         clearFilters();
         this.setState({searchText: ''});
     };
+
     createMapContents = (locations, new_title) => {
         this.setState({
             modal_content: [],
@@ -177,6 +179,7 @@ class ControlCenterAgentSubmissionList extends React.Component {
             {title: 'username', dataIndex: 'username', key: 'username', ...this.getColumnSearchProps('username')},
         ])
 
+        let numeric_columns = []
         if (this.state.answers.length > 0) {
             this.state.answers[0].answers.forEach((value, index) => {
                 let column = {
@@ -186,6 +189,8 @@ class ControlCenterAgentSubmissionList extends React.Component {
                     ...this.getColumnSearchProps(value.name),
                 }
                 columns.push(column)
+                if (value.type === 'Number')
+                    numeric_columns.push(value.name)
             })
         }
 
@@ -201,6 +206,7 @@ class ControlCenterAgentSubmissionList extends React.Component {
                         }}
                     >
                         <h1>Here are submissions for form "{this.state.title}"</h1>
+                        {this.state.answers.length > 0 ? CSVExport(this.state.answers) : '-'}
                         <Table
                             dataSource={answers}
                             columns={columns}
@@ -217,6 +223,33 @@ class ControlCenterAgentSubmissionList extends React.Component {
                                     // this.nextPath(`/submission/${this.props.match.params.id}/${record.id}`)
                                 }
                             })}
+                            summary={pageData => {
+                                let counts = []
+                                if (pageData.length > 0)
+                                    counts = Array(Object.keys(pageData[0]).length).fill(0)
+                                pageData.forEach((value, index) => {
+                                    Object.keys(value).forEach((field, field_index) => {
+                                        if (numeric_columns.includes(field)) {
+                                            counts[field_index] += value[field]
+                                            console.log(counts)
+                                        }
+                                    })
+                                })
+                                return (
+                                    <>
+                                        <Table.Summary.Row>
+                                            {counts.map((value, index) => (
+                                                <Table.Summary.Cell>
+                                                    {index === 0 ? 'Summery' :
+                                                        index === 1 ? '-' :
+                                                            value !== 0 ? value : '-'
+                                                    }
+                                                </Table.Summary.Cell>
+                                            ))}
+                                        </Table.Summary.Row>
+                                    </>
+                                )
+                            }}
                         />
                         <Modal
                             title={this.state.modal_title}

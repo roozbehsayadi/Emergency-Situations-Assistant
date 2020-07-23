@@ -5,6 +5,7 @@ const router = require('./api/api')
 const adminRouter = require('./api/adminApi')
 const port = 9000
 const db = require('./database/db.js')
+const path = require('path')
 
 var logger = require ('./logger')
 require('dotenv').config()
@@ -19,7 +20,17 @@ process.on('SIGINT', function() {
 
 app.use('/', router)
 app.use('/admin', adminRouter)
-app.listen(port, () =>
+
+if (process.env.NODE_ENV === 'production') {
+	// Serve any static files
+	app.use(express.static(path.join(__dirname, 'build')));
+	// Handle React routing, return all requests to React app
+	app.get('*', function(req, res) {
+		res.sendFile(path.join(__dirname, 'build', 'index.html'));
+	});
+}
+
+app.listen(process.env.PORT, () =>
 	console.log(`App listening at http://localhost:${process.env.port}`)
 )
 db.connect()
