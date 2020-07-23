@@ -3,7 +3,7 @@ const axios = require('axios').default
 const sendGetRequestAndSet = async (api, accessToken, setterFunction) => {
 	axios({
 		method: 'get',
-		url: `http://localhost:9000/${api}`,
+		url: `/${api}`,
 		headers: {
 			Authorization: `Bearer ${accessToken}`,
 		},
