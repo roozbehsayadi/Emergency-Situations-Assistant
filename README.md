@@ -97,40 +97,47 @@ This code consists of 10 endpoints for the Admin and 4 endpoints for the Control
 
 Admin has CRUD permission for _areas_ and _forms_. You can see the endpoints in _back/src/api/adminApi.js_.
 
--   **/admin/forms/**: By sending a GET request to this path, you'll get all of the forms available in the database.
+-   **/admin/forms/**
 
-by sending a POST request, you will be able to add a new form to the database.
+    ..\* **GET**: Returns all available forms in the database.
 
--   **/admin/forms/:id**: By sending a GET request to this path, you'll get the respective form's description from the database.
+    ..\* **POST**: Add a new form to the database.
 
-by sending a PUT request, you can replace the respective form with the sent information in the database.
+-   **/admin/forms/:id**
 
-by sending a DELETE request, you can delete the respective form from the database.
+    ..\* **GET**: Returns the respective form's description from the database.
 
--   **/admin/polygons/**: By sending a GET request to this path, you'll get all of the polygons available in the database.
+    ..\* **PUT**: Replaces the respective form's details with the sent information in the database.
 
-by sending a POST request, you will be able to add a new polygon to the database.
+    ..\* **DELETE**: Deletes the respective form from the database.
 
--   **/admin/polygons/:id**: By sending a GET request to this path, you'll get the respective polygon's description from the database.
+-   **/admin/polygons/**
 
-by sending a PUT request, you can replace the respective polygon with the sent information in the database.
+    ..\* **GET**: Returns all available polygons in the database.
 
-by sending a DELETE request, you can delete the respective polygon from the database.
+    ..\* **POST**: Adds a new polygon to the database.
 
-#### other endpoints
+-   **/admin/polygons/:id**
 
-these are out private endpoints so we used authentication in order to secure the accesses.
+    ..\* **GET**: Returns the respectuve polygon's description from the database.
 
--   **/forms/**: this is a GET api that recieves an authorization token and checks the role of the user. for control-center it returns the titles, ids and
-    the number of answers for each unique form existing in database. for field-agent the response does not include number of answers.
+    ..\* **PUT**: Replaces the respective polygon's details with the sent information in the database.
 
--   **/forms/:id**: this is a GET api that receives an authorization token and checks the role of the user, for control-center it returns all answers for the respective forms from answers collection of the database. for field-agent it returns the form from the forms database.
+    ..\* **DELETE**: Deletes the respective polygon from the database.
 
-for submitting the answers you should send a POST request to this path. it first authorizes the user and if it is a field-agent, the information will be added to the answers database.
+#### Other Endpoints
 
--   **/role**: by sending a GET request, you receive the role of the user in the authentication token
+These are the private endpoints. All requests sent to these endpoints must have an access token in their header.
 
-these are out private endpoints so we used authentication in order to secure the accesses.
+-   **/forms/**: This is a GET API that checks the role of the user from the access token available in the header. For the Control Center Agents it returns the titles, IDs and the number of answers for each unique form existing in database. for the Field Agents the response does not include number of answers.
+
+-   **/forms/:id**:
+
+    ..\* **GET**: Checks the role of the user from the access token available in the header. For the Control Center Agents it returns all answers to the respective form from answers collection of the database. for the Field Agents it returns the form from the forms database.
+
+    ..* **POST**: Checks the role of the user from the access token available in the header, then adds the information to the *answers\* collection if the user is a Field Agent.
+
+-   **/role**: This is a GET API. Reads the user information from the access token, and returns the role of the user.
 
 ## Front-end
 
