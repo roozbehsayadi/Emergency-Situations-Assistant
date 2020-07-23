@@ -16,7 +16,7 @@ Technical matters and more details are discussed at the rest of the README.
 
 ## See the Website
 
-You can check out the project with [this link](www.example.com).
+You can check out the project with [this link](https://tranquil-ocean-26514.herokuapp.com/).
 
 ## Running on Your System
 
