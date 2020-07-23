@@ -7,6 +7,7 @@ import {Layout} from "antd";
 import {withRouter} from 'react-router-dom';
 import {Map, Marker, GoogleApiWrapper} from "google-maps-react";
 import sendGetRequestAndSet from "../functions/sendGetRequestAndSet";
+import CSVExport from "./ControlCenterAgent/CSVExport";
 
 class ControlCenterAgentSubmissionList extends React.Component {
     constructor(props) {
@@ -206,6 +207,7 @@ class ControlCenterAgentSubmissionList extends React.Component {
                         }}
                     >
                         <h1>Here are submissions for form "{this.state.title}"</h1>
+                        {this.state.answers.length > 0 ? CSVExport(this.state.answers) : '-'}
                         <Table
                             dataSource={answers}
                             columns={columns}
