@@ -12,12 +12,12 @@ exports.getRole = (req, res) => {
 	users
 		.getUserRole(name)
 		.then((role) => {
-			logger.log(`get request for /user/${name}/role`)
+			logger.log(`get request for /role`)
 			res.status(200).send(role)
 		})
 		.catch((err) => {
 			logger.log(
-				`get request for /user/${name}/role faced the following error :  ${err}`
+				`get request for /role faced the following error :  ${err}`
 			)
 			res.status(404).send({
 				message: 'user with name ' + name + ' not found.',
