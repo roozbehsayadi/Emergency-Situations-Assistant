@@ -15,9 +15,9 @@ exports.insertToForms  = function (jsonObj){
     })
 }
 
-exports.getAllForms  = function  (username){
-
+exports.getAllForms  = function (username){
     return new Promise((res , rej) => {
+
         db.findAll("forms")
         .then ((val) => {
             users.getUserRole(username).then((role) => {
@@ -60,6 +60,19 @@ exports.getAllForms  = function  (username){
     })
 }
 
+exports.getAllFormsAdmin = function (){
+    return new Promise((res , rej) => {
+
+        db.findAll("forms")
+        .then ((val) => {
+            res(val)
+
+        }).catch((err) => {
+            rej(err)
+        })
+    })
+
+}
 exports.getForm = function (id){
     return new Promise ((res , rej) => {
         let jsonStr = " {\"id\" : \"" + id + "\" }" ;

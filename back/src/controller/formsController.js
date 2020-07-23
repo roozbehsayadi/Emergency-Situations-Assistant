@@ -25,8 +25,7 @@ exports.add = (req, res) => {
 }
 
 exports.getAll = (req, res) => {
-
-    username = req.user['https://example.com/email']
+	username = req.user['https://example.com/email']
 	forms
 		.getAllForms(username)
 		.then((result) => {
@@ -44,10 +43,8 @@ exports.getAll = (req, res) => {
 }
 
 exports.getAllAdmin = (req, res) => {
-
-
 	forms
-		.getAllForms(username)
+		.getAllFormsAdmin()
 		.then((result) => {
 			logger.log(`get request for ${req.originalUrl}`)
 			res.status(200).send(result)

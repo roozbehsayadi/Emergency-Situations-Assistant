@@ -22,9 +22,9 @@ router.post('/polygons', express.json(), polygonsController.add )
 router.get('/polygons' , polygonsController.getAll)
 
 router.get('/polygons/:id' , polygonsController.getOne)
-//not tested
+
 router.put('/polygons/:id' ,express.json(), polygonsController.update)
-//not tested
+
 router.delete('/polygons/:id' , polygonsController.delete)
 
 
