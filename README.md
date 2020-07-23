@@ -14,6 +14,10 @@ There are three types of users: System Admin, Field Agent, and Control Center Ag
 
 Technical matters and more details are discussed at the rest of the README.
 
+## See the Website
+
+You can check out the project with [this link](www.example.com).
+
 ## Running on Your System
 
 You have to install Node.js on your system. You can check if you already have it by typing this command:
