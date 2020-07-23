@@ -65,6 +65,10 @@ REACT_APP_GOOGLE_API_KEY= /* Google API Key */
 
 Now the program is ready! First, run the back-end by going to the _back_ folder and type `npm start`. Then go to the _front_ folder and type `yarn start` to start the front-end. At this point, a tab should pop up in your browser and You should be able to see the program's home page.
 
+## Deploy-it-Yourself!
+
+If you changed the code and want to deploy your version on Heroku, simply run the _deploy_script.py_ file from the project's root folder. Make sure that you have [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed on your system.
+
 ## Libraries Used
 
 The front-end is implemented with React and Ant Design.
