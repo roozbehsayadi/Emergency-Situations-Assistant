@@ -6,8 +6,8 @@ import {SearchOutlined} from '@ant-design/icons';
 import {Layout} from "antd";
 import {withRouter} from 'react-router-dom';
 import {Map, Marker, GoogleApiWrapper} from "google-maps-react";
-import sendGetRequestAndSet from "../functions/sendGetRequestAndSet";
-import CSVExport from "./ControlCenterAgent/CSVExport";
+import sendGetRequestAndSet from "../../functions/sendGetRequestAndSet";
+import CSVExport from "./CSVExport";
 
 class ControlCenterAgentSubmissionList extends React.Component {
     constructor(props) {

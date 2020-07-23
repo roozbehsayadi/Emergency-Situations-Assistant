@@ -11,14 +11,14 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 import sendGetRequestAndSet from './functions/sendGetRequestAndSet'
 
-import ControlCenterAgentForms from './components/ControlCenterAgentForms'
+import ControlCenterAgentForms from './components/ControlCenterAgent/ControlCenterAgentForms'
 import FieldAgentForms from './components/FieldAgentForms'
 import FormToSubmit from './components/FormToSubmit/FormToSubmit'
 
 import { LoadingOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
 import { Layout, Menu } from 'antd'
-import ControlCenterAgentSubmissionList from "./components/ControlCenterAgentSubmissionList";
+import ControlCenterAgentSubmissionList from "./components/ControlCenterAgent/ControlCenterAgentSubmissionList";
 const { Header, Content } = Layout
 const { SubMenu } = Menu
 

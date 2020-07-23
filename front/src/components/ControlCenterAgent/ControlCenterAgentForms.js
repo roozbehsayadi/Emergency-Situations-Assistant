@@ -3,7 +3,7 @@ import React from 'react'
 import {Table} from "antd";
 import {Layout} from "antd";
 import {withRouter} from 'react-router-dom';
-import sendGetRequestAndSet from "../functions/sendGetRequestAndSet";
+import sendGetRequestAndSet from "../../functions/sendGetRequestAndSet";
 
 class ControlCenterAgentForms extends React.Component {
     constructor(props) {
