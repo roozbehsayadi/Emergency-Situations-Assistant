@@ -16,9 +16,9 @@ exports.getUserRole = function(userName){
 
                     let newRed = {}
                     newRed["username"] = userName ;
-                    newRed["role"] = "control-center"
+                    newRed["role"] = "control_center"
                     db.insert("users" , newRed).then ((added) => {
-                        res("control-center")
+                        res("control_center")
                     })
                     .catch((err) => {
                         rej(err)
@@ -26,6 +26,7 @@ exports.getUserRole = function(userName){
 
                 }
                 else {
+                    console.log(res.val)
                     res(val.role);
                 }
             }).catch((err) => {
