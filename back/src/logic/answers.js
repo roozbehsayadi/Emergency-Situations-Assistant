@@ -58,3 +58,19 @@ exports.getAnswers = function (id) {
     });
 }
 
+exports.getAnswersLen = function (id) {
+    return new Promise ((res , rej) => {
+        let jsonStr = " {\"formId\" : \"" + id + "\" }" ;
+
+        db.findMany("answers" , jsonStr )
+            .then ((val) => {
+                 res(val);
+            })
+            .catch((err) => {
+                rej(err)
+            })
+    })
+
+}
+
+
