@@ -120,6 +120,7 @@ class ControlCenterAgentSubmissionList extends React.Component {
         clearFilters();
         this.setState({searchText: ''});
     };
+
     createMapContents = (locations, new_title) => {
         this.setState({
             modal_content: [],
@@ -188,10 +189,8 @@ class ControlCenterAgentSubmissionList extends React.Component {
                     ...this.getColumnSearchProps(value.name),
                 }
                 columns.push(column)
-                if (column.type === 'Number')
-                    numeric_columns.push(true)
-                else
-                    numeric_columns.push(false)
+                if (value.type === 'Number')
+                    numeric_columns.push(value.name)
             })
         }
 
@@ -225,21 +224,26 @@ class ControlCenterAgentSubmissionList extends React.Component {
                                 }
                             })}
                             summary={pageData => {
-                                let counts = Array(numeric_columns.length).fill(0)
+                                let counts = []
+                                if (pageData.length > 0)
+                                    counts = Array(Object.keys(pageData[0]).length).fill(0)
                                 pageData.forEach((value, index) => {
                                     Object.keys(value).forEach((field, field_index) => {
-                                        if (numeric_columns[field_index])
-                                            counts[field_index] += field
+                                        if (numeric_columns.includes(field)) {
+                                            counts[field_index] += value[field]
+                                            console.log(counts)
+                                        }
                                     })
                                 })
                                 return (
                                     <>
                                         <Table.Summary.Row>
-                                            <Table.Summary.Cell>Summery</Table.Summary.Cell>
-                                            <Table.Summary.Cell>-</Table.Summary.Cell>
-                                            {numeric_columns.map((value, index) => (
+                                            {counts.map((value, index) => (
                                                 <Table.Summary.Cell>
-                                                    {value ? counts[index] : '-'}
+                                                    {index === 0 ? 'Summery' :
+                                                        index === 1 ? '-' :
+                                                            value !== 0 ? value : '-'
+                                                    }
                                                 </Table.Summary.Cell>
                                             ))}
                                         </Table.Summary.Row>
