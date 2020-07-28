@@ -8,7 +8,8 @@ var logger = require ('../logger')
 
 exports.getRole = (req, res) => {
 
-    name = req.user['https://example.com/email']
+	name = req.user['https://example.com/email']
+
 	users
 		.getUserRole(name)
 		.then((role) => {
